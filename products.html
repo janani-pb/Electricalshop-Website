@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — Bright Electricals</title>
+  <meta name="description" content="Browse our wide range of electrical products — LED lighting, fans, wiring, switches, inverters and more." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>body{font-family:'Inter','Segoe UI',sans-serif;}</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <i class="fas fa-bolt preloader-icon"></i>
+    <div class="preloader-name">Bright Electricals</div>
+    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg site-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-wrap" href="index.html">
+      <div class="navbar-logo-icon"><i class="fas fa-bolt"></i></div>
+      <div>
+        <span class="navbar-brand-name">Bright Electricals</span>
+        <span class="navbar-brand-tagline">Powering Your World</span>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+      <ul class="navbar-nav align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link nav-cta" href="contact.html"><i class="fas fa-phone-alt me-1"></i>Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Banner -->
+<section class="page-banner">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h1 class="banner-title"><i class="fas fa-th-large me-2" style="color:#FFB800;"></i>Our Products</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Products</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <span style="color:rgba(255,255,255,.6); font-size:.88rem;"><i class="fas fa-box me-1" style="color:#FFB800;"></i>1200+ Products Available</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Main -->
+<section class="section-padding-sm" style="background:#f4f7fb;">
+  <div class="container">
+    <!-- Search Bar -->
+    <div class="search-wrap">
+      <div class="row g-3 align-items-center">
+        <div class="col-md-8">
+          <div class="input-group search-input-group">
+            <input type="text" id="productSearch" class="form-control" placeholder="Search for products (e.g. LED bulb, ceiling fan, MCB)..." />
+            <button class="btn btn-search" type="button"><i class="fas fa-search me-1"></i> Search</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex gap-2">
+            <select class="form-control sort-select flex-fill" id="sortProducts">
+              <option value="">Sort by: Default</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Sidebar -->
+      <div class="col-lg-3">
+        <!-- Categories -->
+        <div class="sidebar-box">
+          <div class="sidebar-head"><i class="fas fa-list-ul"></i> Categories</div>
+          <div class="sidebar-body">
+            <ul class="cat-list">
+              <li><a href="#" class="active" data-category="all"><i class="fas fa-th me-2" style="color:#FFB800;"></i>All Products <span class="cat-count">24</span></a></li>
+              <li><a href="#" data-category="lighting"><i class="fas fa-lightbulb me-2" style="color:#FFB800;"></i>LED Lighting <span class="cat-count">6</span></a></li>
+              <li><a href="#" data-category="fans"><i class="fas fa-fan me-2" style="color:#FFB800;"></i>Fans <span class="cat-count">4</span></a></li>
+              <li><a href="#" data-category="wiring"><i class="fas fa-grip-lines me-2" style="color:#FFB800;"></i>Wiring & Cables <span class="cat-count">5</span></a></li>
+              <li><a href="#" data-category="switches"><i class="fas fa-toggle-on me-2" style="color:#FFB800;"></i>Switches & MCB <span class="cat-count">4</span></a></li>
+              <li><a href="#" data-category="inverters"><i class="fas fa-car-battery me-2" style="color:#FFB800;"></i>Inverters & UPS <span class="cat-count">3</span></a></li>
+              <li><a href="#" data-category="safety"><i class="fas fa-shield-alt me-2" style="color:#FFB800;"></i>Safety Devices <span class="cat-count">2</span></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- Price Range -->
+        <div class="sidebar-box">
+          <div class="sidebar-head"><i class="fas fa-rupee-sign"></i> Price Range</div>
+          <div class="sidebar-body">
+            <div class="price-range-wrap">
+              <input type="range" min="0" max="10000" value="10000" class="form-range" id="priceRange" oninput="document.getElementById('priceVal').textContent='₹'+this.value">
+              <div class="price-labels"><span>₹0</span><span id="priceVal">₹10,000</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Brands -->
+        <div class="sidebar-box">
+          <div class="sidebar-head"><i class="fas fa-tag"></i> Brands</div>
+          <div class="sidebar-body">
+            <div class="d-flex flex-column gap-2">
+              <label class="d-flex align-items-center gap-2" style="font-size:.88rem; color:#374151; cursor:pointer;">
+                <input type="checkbox" checked style="accent-color:#FFB800;"> Havells
+              </label>
+              <label class="d-flex align-items-center gap-2" style="font-size:.88rem; color:#374151; cursor:pointer;">
+                <input type="checkbox" checked style="accent-color:#FFB800;"> Crompton
+              </label>
+              <label class="d-flex align-items-center gap-2" style="font-size:.88rem; color:#374151; cursor:pointer;">
+                <input type="checkbox" style="accent-color:#FFB800;"> Finolex
+              </label>
+              <label class="d-flex align-items-center gap-2" style="font-size:.88rem; color:#374151; cursor:pointer;">
+                <input type="checkbox" style="accent-color:#FFB800;"> Polycab
+              </label>
+              <label class="d-flex align-items-center gap-2" style="font-size:.88rem; color:#374151; cursor:pointer;">
+                <input type="checkbox" style="accent-color:#FFB800;"> Anchor
+              </label>
+              <label class="d-flex align-items-center gap-2" style="font-size:.88rem; color:#374151; cursor:pointer;">
+                <input type="checkbox" style="accent-color:#FFB800;"> Syska
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- Info Box -->
+        <div style="background:linear-gradient(135deg,#0a2744,#1a3a5c); border-radius:12px; padding:24px; text-align:center; color:#fff;">
+          <i class="fas fa-headset" style="font-size:2rem; color:#FFB800; margin-bottom:10px; display:block;"></i>
+          <h6 style="color:#fff; font-size:.95rem; margin-bottom:8px;">Need Help?</h6>
+          <p style="font-size:.82rem; color:rgba(255,255,255,.7); margin-bottom:14px; line-height:1.5;">Our experts will help you choose the right product.</p>
+          <a href="contact.html" style="display:block; background:#FFB800; color:#0a2744; padding:9px 16px; border-radius:8px; font-weight:700; font-size:.85rem; text-decoration:none;">
+            <i class="fas fa-phone-alt me-1"></i> Call Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="col-lg-9">
+        <!-- Sort bar -->
+        <div class="sort-bar">
+          <p class="result-count mb-0">Showing <strong id="resultCount">24</strong> products</p>
+          <div class="d-flex align-items-center gap-2">
+            <span style="font-size:.82rem; color:#6b7280;">View:</span>
+            <button class="btn btn-sm" style="background:#0a2744; color:#fff; border-radius:6px; padding:5px 10px; border:none;"><i class="fas fa-th-large"></i></button>
+            <button class="btn btn-sm" style="background:#e5e7eb; color:#374151; border-radius:6px; padding:5px 10px; border:none;"><i class="fas fa-list"></i></button>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div class="row g-4" id="productsGrid">
+
+          <!-- LED Bulb 9W -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="lighting" data-price="85" data-name="9W LED Bulb">
+            <div class="product-card">
+              <div class="product-card-img">
+                <span class="prod-badge">Best Seller</span>
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Havells / Syska</div>
+                <div class="prod-name">9W LED Bulb</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(128)</span></div>
+                <p class="prod-desc">900 lumens, cool white, 2-year warranty, ISI marked.</p>
+                <div class="prod-price">₹85 <span>₹120</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- LED Panel Light -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="lighting" data-price="450" data-name="LED Panel Light">
+            <div class="product-card">
+              <div class="product-card-img">
+                <span class="prod-badge new-badge">New</span>
+                <i class="fas fa-sun"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Havells</div>
+                <div class="prod-name">18W LED Panel Light</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(75)</span></div>
+                <p class="prod-desc">Slim square panel, 1800 lumens, cool/warm white options.</p>
+                <div class="prod-price">₹450 <span>₹620</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- LED Tube Light -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="lighting" data-price="180" data-name="LED Tube Light">
+            <div class="product-card">
+              <div class="product-card-img">
+                <i class="fas fa-ruler-horizontal"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Syska / Wipro</div>
+                <div class="prod-name">20W LED Tube Light</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>(54)</span></div>
+                <p class="prod-desc">4 ft LED tube, 2000 lumens, flicker-free, 3-year warranty.</p>
+                <div class="prod-price">₹180 <span>₹250</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- LED Downlight -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="lighting" data-price="220" data-name="LED Downlight">
+            <div class="product-card">
+              <div class="product-card-img">
+                <span class="prod-badge sale-badge">Sale</span>
+                <i class="fas fa-circle"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Crompton</div>
+                <div class="prod-name">12W LED Downlight</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(41)</span></div>
+                <p class="prod-desc">Recessed round downlight, warm white, aluminium body.</p>
+                <div class="prod-price">₹220 <span>₹320</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ceiling Fan -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="fans" data-price="2899" data-name="Premium Ceiling Fan">
+            <div class="product-card">
+              <div class="product-card-img">
+                <span class="prod-badge">Top Rated</span>
+                <i class="fas fa-fan"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Crompton / Orient</div>
+                <div class="prod-name">48" BLDC Ceiling Fan</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(94)</span></div>
+                <p class="prod-desc">5-star rated BLDC motor fan with remote control. 28W power.</p>
+                <div class="prod-price">₹2,899 <span>₹3,500</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table Fan -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="fans" data-price="1250" data-name="Table Fan">
+            <div class="product-card">
+              <div class="product-card-img">
+                <i class="fas fa-wind"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Havells / Usha</div>
+                <div class="prod-name">16" High-Speed Table Fan</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>(62)</span></div>
+                <p class="prod-desc">3-speed control, powerful airflow, 55W motor, ISI marked.</p>
+                <div class="prod-price">₹1,250 <span>₹1,600</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2.5mm Wire -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="wiring" data-price="1450" data-name="2.5mm Wire Coil">
+            <div class="product-card">
+              <div class="product-card-img">
+                <span class="prod-badge sale-badge">Sale</span>
+                <i class="fas fa-grip-lines"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Finolex / Polycab</div>
+                <div class="prod-name">2.5mm Wire Coil 90m</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(215)</span></div>
+                <p class="prod-desc">FR-PVC copper wire, 90m coil, ISI certified, multiple colours.</p>
+                <div class="prod-price">₹1,450 <span>₹1,800</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4mm Wire -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="wiring" data-price="2200" data-name="4mm Wire Coil">
+            <div class="product-card">
+              <div class="product-card-img">
+                <i class="fas fa-cable-car"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Polycab</div>
+                <div class="prod-name">4mm Wire Coil 90m</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(88)</span></div>
+                <p class="prod-desc">Heavy-duty FR-PVC copper wire for power circuits. ISI marked.</p>
+                <div class="prod-price">₹2,200 <span>₹2,700</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- MCB 32A -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="switches" data-price="320" data-name="MCB Switch 32A">
+            <div class="product-card">
+              <div class="product-card-img">
+                <span class="prod-badge">ISI Marked</span>
+                <i class="fas fa-toggle-on"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Havells / Legrand</div>
+                <div class="prod-name">MCB Switch 32A SP</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>(67)</span></div>
+                <p class="prod-desc">Single-pole MCB, overload &amp; short-circuit protection. ISI marked.</p>
+                <div class="prod-price">₹320 <span>₹420</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8-way DB -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="switches" data-price="1850" data-name="8-Way DB Box">
+            <div class="product-card">
+              <div class="product-card-img">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Schneider / Havells</div>
+                <div class="prod-name">8-Way Distribution Board</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(39)</span></div>
+                <p class="prod-desc">8-way MCB DB, double-door, IP40 protection, metal body.</p>
+                <div class="prod-price">₹1,850 <span>₹2,400</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1kVA Inverter -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="inverters" data-price="5500" data-name="1kVA Inverter">
+            <div class="product-card">
+              <div class="product-card-img">
+                <span class="prod-badge new-badge">New</span>
+                <i class="fas fa-car-battery"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Luminous / Microtek</div>
+                <div class="prod-name">1kVA Pure Sine Inverter</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(52)</span></div>
+                <p class="prod-desc">Pure sine wave, 1kVA/800W, LCD display, fast charging.</p>
+                <div class="prod-price">₹5,500 <span>₹7,000</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ELCB -->
+          <div class="col-sm-6 col-xl-4 prod-card-wrap" data-category="safety" data-price="980" data-name="ELCB Safety Switch">
+            <div class="product-card">
+              <div class="product-card-img">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="product-card-body">
+                <div class="prod-brand">Legrand / Schneider</div>
+                <div class="prod-name">ELCB 40A 30mA</div>
+                <div class="prod-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(33)</span></div>
+                <p class="prod-desc">Earth leakage circuit breaker, 30mA sensitivity, 2P, ISI marked.</p>
+                <div class="prod-price">₹980 <span>₹1,250</span></div>
+                <a href="product-details.html" class="btn-sm-yellow"><i class="fas fa-eye"></i> View Details</a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /productsGrid -->
+
+        <!-- Pagination -->
+        <nav class="mt-5 d-flex justify-content-center">
+          <ul class="pagination">
+            <li class="page-item disabled"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
+            <li class="page-item active"><a class="page-link" href="#" style="background:#FFB800; border-color:#FFB800; color:#0a2744; font-weight:700;">1</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color:#0a2744;">2</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color:#0a2744;">3</a></li>
+            <li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-section">
+  <div class="container text-center position-relative">
+    <h2 class="cta-title reveal">Can't Find What You're Looking For?</h2>
+    <p class="cta-sub mb-4 mx-auto reveal">Contact our team and we'll source any electrical product for you.</p>
+    <a href="contact.html" class="btn-yellow reveal"><i class="fas fa-phone-alt"></i> Contact Our Team</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-logo-icon"><i class="fas fa-bolt"></i></div>
+        <span class="footer-brand-name">Bright Electricals</span>
+        <p class="footer-about">Your trusted partner for all electrical needs. Premium-quality products and professional services since 2005.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-6">
+        <h5 class="footer-heading">Quick Links</h5>
+        <ul class="footer-list">
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i>Home</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Products</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i>Services</a></li>
+          <li><a href="gallery.html"><i class="fas fa-chevron-right"></i>Gallery</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i>About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i>Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 col-6">
+        <h5 class="footer-heading">Categories</h5>
+        <ul class="footer-list">
+          <li><a href="#"><i class="fas fa-chevron-right"></i>LED Lighting</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i>Ceiling Fans</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i>Wiring & Cables</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i>Switches & MCB</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i>Inverters & UPS</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i>Safety Devices</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-heading">Contact Us</h5>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="info">No. 45, Anna Salai, Near Bus Stand,<br>Chennai – 600 002, Tamil Nadu</div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="info"><a href="tel:+914412345678" style="color:rgba(255,255,255,.65);">+91 44 1234 5678</a><br><a href="tel:+919876543210" style="color:rgba(255,255,255,.65);">+91 98765 43210</a></div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+          <div class="info"><a href="mailto:info@brightelectricals.com" style="color:rgba(255,255,255,.65);">info@brightelectricals.com</a></div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-clock"></i></div>
+          <div class="info">Mon – Sat: 9:00 AM – 8:00 PM<br>Sunday: 10:00 AM – 5:00 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="mb-0">© 2024 <a href="index.html">Bright Electricals</a>. All rights reserved.</p>
+  </div>
+</footer>
+
+<button id="scrollTop" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

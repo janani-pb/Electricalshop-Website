@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Bright Electricals</title>
+  <meta name="description" content="Browse our gallery of shop images, product shots, and professional electrical installation work." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { font-family: 'Inter', 'Segoe UI', sans-serif; }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      position: fixed; inset: 0; z-index: 9998;
+      background: rgba(6,14,28,0.96);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: all .3s ease;
+    }
+    .lightbox-overlay.open { opacity: 1; visibility: visible; }
+    .lightbox-inner {
+      max-width: 600px; width: 90%; text-align: center;
+      position: relative; padding: 40px 30px;
+    }
+    .lightbox-icon { font-size: 7rem; color: rgba(255,184,0,.55); margin-bottom: 20px; }
+    .lightbox-title { color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+    .lightbox-cat { color: #FFB800; font-size: .88rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .lightbox-desc { color: rgba(255,255,255,.65); font-size: .9rem; line-height: 1.7; }
+    .lightbox-close {
+      position: absolute; top: 10px; right: 10px;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: none;
+      color: #fff; font-size: 1.1rem; cursor: pointer;
+      transition: all .2s; display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-close:hover { background: #FFB800; color: #0a2744; }
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; background: rgba(255,255,255,.1);
+      border: none; border-radius: 50%; color: #fff;
+      font-size: 1rem; cursor: pointer; transition: all .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-nav:hover { background: #FFB800; color: #0a2744; }
+    .lightbox-prev { left: -55px; }
+    .lightbox-next { right: -55px; }
+    @media(max-width:600px){
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <i class="fas fa-bolt preloader-icon"></i>
+    <div class="preloader-name">Bright Electricals</div>
+    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg site-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-wrap" href="index.html">
+      <div class="navbar-logo-icon"><i class="fas fa-bolt"></i></div>
+      <div>
+        <span class="navbar-brand-name">Bright Electricals</span>
+        <span class="navbar-brand-tagline">Powering Your World</span>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+      <ul class="navbar-nav align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link nav-cta" href="contact.html"><i class="fas fa-phone-alt me-1"></i>Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Banner -->
+<section class="page-banner">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h1 class="banner-title"><i class="fas fa-images me-2" style="color:#FFB800;"></i>Our Gallery</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Gallery</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <span style="color:rgba(255,255,255,.6); font-size:.88rem;"><i class="fas fa-photo-video me-1" style="color:#FFB800;"></i>36 Photos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="section-padding" style="background:#f4f7fb;">
+  <div class="container">
+
+    <!-- Filter Bar -->
+    <div class="gallery-filter-bar reveal">
+      <button class="gal-filter active" data-filter="all">All Photos</button>
+      <button class="gal-filter" data-filter="shop">Shop</button>
+      <button class="gal-filter" data-filter="products">Products</button>
+      <button class="gal-filter" data-filter="installation">Installation Work</button>
+      <button class="gal-filter" data-filter="team">Our Team</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="row g-3" id="galleryGrid">
+
+      <!-- Shop Images -->
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-1" data-category="shop">
+        <div class="gallery-tile" data-title="Our Showroom" data-cat="Shop" data-icon="fas fa-store fa-4x" data-desc="Our spacious showroom at Anna Salai displaying over 1,200 electrical products from 50+ brands." onclick="openLightbox(0)">
+          <div class="gallery-tile-bg gtile-1"><i class="fas fa-store"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Our Showroom</h5>
+            <span>Shop</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-2" data-category="shop">
+        <div class="gallery-tile" data-title="Product Display Wall" data-cat="Shop" data-icon="fas fa-th-large fa-4x" data-desc="Our well-organised product display wall featuring switchgear, MCBs, and safety devices." onclick="openLightbox(1)">
+          <div class="gallery-tile-bg gtile-2"><i class="fas fa-th-large"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Product Display</h5>
+            <span>Shop</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-3" data-category="shop">
+        <div class="gallery-tile" data-title="Lighting Section" data-cat="Shop" data-icon="fas fa-lightbulb fa-4x" data-desc="Our dedicated LED lighting section showcasing hundreds of bulbs, panels, tubes, and downlights." onclick="openLightbox(2)">
+          <div class="gallery-tile-bg gtile-3"><i class="fas fa-lightbulb"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Lighting Section</h5>
+            <span>Shop</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-4" data-category="shop">
+        <div class="gallery-tile" data-title="Wire & Cable Section" data-cat="Shop" data-icon="fas fa-grip-lines fa-4x" data-desc="Extensive stock of FR-PVC copper wires in multiple gauges and colours from Finolex and Polycab." onclick="openLightbox(3)">
+          <div class="gallery-tile-bg gtile-4"><i class="fas fa-grip-lines"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Wire & Cable Section</h5>
+            <span>Shop</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Images -->
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-1" data-category="products">
+        <div class="gallery-tile" data-title="LED Lighting Range" data-cat="Products" data-icon="fas fa-sun fa-4x" data-desc="Our curated range of LED lighting products — bulbs, panels, downlights, and strip lights from top brands." onclick="openLightbox(4)">
+          <div class="gallery-tile-bg gtile-5"><i class="fas fa-sun"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>LED Lighting Range</h5>
+            <span>Products</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-2" data-category="products">
+        <div class="gallery-tile" data-title="Ceiling Fan Collection" data-cat="Products" data-icon="fas fa-fan fa-4x" data-desc="Premium BLDC and standard ceiling fans from Crompton, Orient, and Havells in various designs." onclick="openLightbox(5)">
+          <div class="gallery-tile-bg gtile-6"><i class="fas fa-fan"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Ceiling Fan Collection</h5>
+            <span>Products</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-3" data-category="products">
+        <div class="gallery-tile" data-title="MCB & Switchgear" data-cat="Products" data-icon="fas fa-toggle-on fa-4x" data-desc="Complete range of MCBs, ELCBs, and distribution boards from Havells, Legrand, and Schneider." onclick="openLightbox(6)">
+          <div class="gallery-tile-bg gtile-7"><i class="fas fa-toggle-on"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>MCB & Switchgear</h5>
+            <span>Products</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-4" data-category="products">
+        <div class="gallery-tile" data-title="Inverter & UPS Range" data-cat="Products" data-icon="fas fa-car-battery fa-4x" data-desc="Pure sine wave inverters and UPS systems from Luminous and Microtek — for home and office backup." onclick="openLightbox(7)">
+          <div class="gallery-tile-bg gtile-8"><i class="fas fa-car-battery"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Inverter & UPS Range</h5>
+            <span>Products</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-1" data-category="products">
+        <div class="gallery-tile" data-title="Modular Switches" data-cat="Products" data-icon="fas fa-plug fa-4x" data-desc="Premium modular switches and sockets from Anchor, Legrand, and Havells — modern and durable." onclick="openLightbox(8)">
+          <div class="gallery-tile-bg gtile-9"><i class="fas fa-plug"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Modular Switches</h5>
+            <span>Products</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-2" data-category="products">
+        <div class="gallery-tile" data-title="Safety Devices" data-cat="Products" data-icon="fas fa-shield-alt fa-4x" data-desc="ELCBs, SPDs, and surge protectors to keep your electrical systems safe from faults and surges." onclick="openLightbox(9)">
+          <div class="gallery-tile-bg gtile-10"><i class="fas fa-shield-alt"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Safety Devices</h5>
+            <span>Products</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Installation Work -->
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-3" data-category="installation">
+        <div class="gallery-tile" data-title="Home Wiring Project" data-cat="Installation Work" data-icon="fas fa-home fa-4x" data-desc="Complete home wiring project for a 3BHK apartment in Adyar — concealed PVC conduit wiring." onclick="openLightbox(10)">
+          <div class="gallery-tile-bg gtile-11"><i class="fas fa-home"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Home Wiring Project</h5>
+            <span>Installation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-4" data-category="installation">
+        <div class="gallery-tile" data-title="DB Panel Installation" data-cat="Installation Work" data-icon="fas fa-layer-group fa-4x" data-desc="16-way distribution board installation for a commercial office complex — neat and professional." onclick="openLightbox(11)">
+          <div class="gallery-tile-bg gtile-12"><i class="fas fa-layer-group"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>DB Panel Installation</h5>
+            <span>Installation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-1" data-category="installation">
+        <div class="gallery-tile" data-title="Industrial Wiring" data-cat="Installation Work" data-icon="fas fa-industry fa-4x" data-desc="Complete LT panel and motor wiring for a manufacturing unit in Ambattur industrial estate." onclick="openLightbox(12)">
+          <div class="gallery-tile-bg gtile-1"><i class="fas fa-industry"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Industrial Wiring</h5>
+            <span>Installation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-2" data-category="installation">
+        <div class="gallery-tile" data-title="Inverter Installation" data-cat="Installation Work" data-icon="fas fa-bolt fa-4x" data-desc="1.5 kVA inverter + 2-battery bank installation for a residential apartment — clean, safe setup." onclick="openLightbox(13)">
+          <div class="gallery-tile-bg gtile-2"><i class="fas fa-bolt"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Inverter Installation</h5>
+            <span>Installation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-3" data-category="installation">
+        <div class="gallery-tile" data-title="LED Office Lighting" data-cat="Installation Work" data-icon="fas fa-building fa-4x" data-desc="Complete LED panel light installation for a 5000 sq.ft. IT office — bright, uniform, energy-saving." onclick="openLightbox(14)">
+          <div class="gallery-tile-bg gtile-3"><i class="fas fa-building"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>LED Office Lighting</h5>
+            <span>Installation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-4" data-category="installation">
+        <div class="gallery-tile" data-title="Earthing System" data-cat="Installation Work" data-icon="fas fa-broadcast-tower fa-4x" data-desc="Pipe earthing system installation for a commercial building — ensures safety against electrical faults." onclick="openLightbox(15)">
+          <div class="gallery-tile-bg gtile-4"><i class="fas fa-broadcast-tower"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Earthing System</h5>
+            <span>Installation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-1" data-category="team">
+        <div class="gallery-tile" data-title="Our Service Team" data-cat="Our Team" data-icon="fas fa-users fa-4x" data-desc="Our dedicated team of 15 certified electricians and support staff — the backbone of Bright Electricals." onclick="openLightbox(16)">
+          <div class="gallery-tile-bg gtile-5"><i class="fas fa-users"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Our Service Team</h5>
+            <span>Team</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-2" data-category="team">
+        <div class="gallery-tile" data-title="Customer Training Session" data-cat="Our Team" data-icon="fas fa-chalkboard-teacher fa-4x" data-desc="Our team conducting a free electrical safety awareness session for apartment residents." onclick="openLightbox(17)">
+          <div class="gallery-tile-bg gtile-6"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Safety Training</h5>
+            <span>Team</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-3" data-category="shop">
+        <div class="gallery-tile" data-title="Fan Display Section" data-cat="Shop" data-icon="fas fa-wind fa-4x" data-desc="Our ceiling fan display area with working demo fans from Orient, Crompton, Havells, and Usha." onclick="openLightbox(18)">
+          <div class="gallery-tile-bg gtile-7"><i class="fas fa-wind"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Fan Display Section</h5>
+            <span>Shop</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 gallery-item-wrap reveal reveal-delay-4" data-category="installation">
+        <div class="gallery-tile" data-title="Switchboard Fitting" data-cat="Installation Work" data-icon="fas fa-th fa-4x" data-desc="Modular switchboard installation with USB sockets and switches in a newly constructed villa." onclick="openLightbox(19)">
+          <div class="gallery-tile-bg gtile-8"><i class="fas fa-th"></i></div>
+          <div class="gallery-overlay">
+            <div class="gallery-zoom-btn"><i class="fas fa-search-plus"></i></div>
+            <h5>Switchboard Fitting</h5>
+            <span>Installation</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /galleryGrid -->
+
+    <!-- Load More -->
+    <div class="text-center mt-5 reveal">
+      <button class="btn-primary-dark" onclick="this.textContent='All photos loaded!'; this.disabled=true; this.style.opacity='.6';">
+        <i class="fas fa-plus me-2"></i>Load More Photos
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightboxOnOverlay(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <button class="lightbox-nav lightbox-prev" onclick="changeLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" onclick="changeLightbox(1)"><i class="fas fa-chevron-right"></i></button>
+    <div id="lbIcon" class="lightbox-icon"><i class="fas fa-store"></i></div>
+    <div id="lbTitle" class="lightbox-title">Our Showroom</div>
+    <div id="lbCat" class="lightbox-cat">Shop</div>
+    <p id="lbDesc" class="lightbox-desc">Description here.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container text-center position-relative">
+    <div class="reveal">
+      <span class="section-tag" style="color:#FFB800; border-color:rgba(255,184,0,.4); background:rgba(255,184,0,.1);">See Our Work</span>
+      <h2 class="cta-title mt-2">Interested in Our Products or Services?</h2>
+      <p class="cta-sub mb-5 mx-auto">Visit our showroom or contact us to discuss your requirements with our expert team.</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="contact.html" class="btn-yellow"><i class="fas fa-phone-alt"></i> Contact Us</a>
+        <a href="products.html" class="btn-outline-white"><i class="fas fa-shopping-bag"></i> Browse Products</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-logo-icon"><i class="fas fa-bolt"></i></div>
+        <span class="footer-brand-name">Bright Electricals</span>
+        <p class="footer-about">Your trusted partner for all electrical needs. Premium-quality products and professional services since 2005.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-6">
+        <h5 class="footer-heading">Quick Links</h5>
+        <ul class="footer-list">
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i>Home</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Products</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i>Services</a></li>
+          <li><a href="gallery.html"><i class="fas fa-chevron-right"></i>Gallery</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i>About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i>Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 col-6">
+        <h5 class="footer-heading">Categories</h5>
+        <ul class="footer-list">
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>LED Lighting</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Ceiling Fans</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Wiring & Cables</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Switches & MCB</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Inverters & UPS</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Safety Devices</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-heading">Contact Us</h5>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="info">No. 45, Anna Salai, Near Bus Stand,<br>Chennai – 600 002, Tamil Nadu</div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="info"><a href="tel:+914412345678" style="color:rgba(255,255,255,.65);">+91 44 1234 5678</a></div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+          <div class="info"><a href="mailto:info@brightelectricals.com" style="color:rgba(255,255,255,.65);">info@brightelectricals.com</a></div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-clock"></i></div>
+          <div class="info">Mon – Sat: 9:00 AM – 8:00 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="mb-0">© 2024 <a href="index.html">Bright Electricals</a>. All rights reserved.</p>
+  </div>
+</footer>
+
+<button id="scrollTop" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script>
+  // Build gallery data from tiles
+  const galleryData = Array.from(document.querySelectorAll('.gallery-tile')).map(el => ({
+    title: el.dataset.title,
+    cat:   el.dataset.cat,
+    icon:  el.dataset.icon,
+    desc:  el.dataset.desc
+  }));
+
+  let currentIdx = 0;
+
+  function openLightbox(idx) {
+    currentIdx = idx;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeLightboxOnOverlay(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+
+  function changeLightbox(dir) {
+    const visible = Array.from(document.querySelectorAll('.gallery-item-wrap')).filter(el => el.style.display !== 'none');
+    const tiles   = visible.map(el => {
+      const t = el.querySelector('.gallery-tile');
+      return { title: t.dataset.title, cat: t.dataset.cat, icon: t.dataset.icon, desc: t.dataset.desc };
+    });
+    if (!tiles.length) return;
+    currentIdx = (currentIdx + dir + tiles.length) % tiles.length;
+    updateLightboxWith(tiles[currentIdx]);
+  }
+
+  function updateLightbox() {
+    const d = galleryData[currentIdx] || galleryData[0];
+    updateLightboxWith(d);
+  }
+
+  function updateLightboxWith(d) {
+    document.getElementById('lbIcon').innerHTML  = `<i class="${d.icon}" style="color:rgba(255,184,0,.55);"></i>`;
+    document.getElementById('lbTitle').textContent = d.title;
+    document.getElementById('lbCat').textContent   = d.cat;
+    document.getElementById('lbDesc').textContent  = d.desc;
+  }
+
+  document.addEventListener('keydown', function(e) {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   changeLightbox(-1);
+    if (e.key === 'ArrowRight')  changeLightbox(1);
+  });
+</script>
+</body>
+</html>

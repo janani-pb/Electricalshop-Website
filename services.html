@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Bright Electricals</title>
+  <meta name="description" content="Professional electrical services — home wiring, installation, repair, inverter setup, and industrial work." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { font-family: 'Inter', 'Segoe UI', sans-serif; }
+
+    .service-hero-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      height: 100%;
+      position: relative;
+    }
+    .service-hero-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+    .service-hero-card .card-top {
+      padding: 36px 28px 28px;
+      background: linear-gradient(135deg, #0a2744, #1a3a5c);
+      position: relative; overflow: hidden;
+    }
+    .service-hero-card .card-top::after {
+      content: '';
+      position: absolute; bottom: -20px; right: -20px;
+      width: 80px; height: 80px;
+      background: rgba(255,184,0,0.1);
+      border-radius: 50%;
+    }
+    .service-hero-card .card-top i {
+      font-size: 2.8rem; color: #FFB800;
+      margin-bottom: 14px; display: block;
+    }
+    .service-hero-card .card-top h4 { color: #fff; font-size: 1.15rem; margin-bottom: 6px; }
+    .service-hero-card .card-top p { color: rgba(255,255,255,.65); font-size: .84rem; margin: 0; line-height: 1.6; }
+    .service-hero-card .card-bot { padding: 22px 28px; }
+    .service-hero-card .feature-list { list-style: none; padding: 0; margin-bottom: 20px; }
+    .service-hero-card .feature-list li {
+      display: flex; align-items: center; gap: 9px;
+      padding: 7px 0; border-bottom: 1px solid #f0f0f0;
+      font-size: .87rem; color: #4b5563;
+    }
+    .service-hero-card .feature-list li:last-child { border-bottom: none; }
+    .service-hero-card .feature-list li i { color: #FFB800; font-size: .8rem; }
+
+    .process-step {
+      display: flex; align-items: flex-start; gap: 18px;
+      background: #fff; border-radius: 12px; padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      transition: all .3s ease;
+    }
+    .process-step:hover { transform: translateX(6px); box-shadow: 0 8px 30px rgba(0,0,0,.15); }
+    .step-num {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: linear-gradient(135deg, #FFB800, #e6a600);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; font-weight: 900; color: #0a2744;
+    }
+    .process-step h5 { font-size: .98rem; color: #0a2744; margin-bottom: 5px; }
+    .process-step p { font-size: .85rem; color: #6b7280; margin: 0; line-height: 1.6; }
+
+    .pricing-card {
+      background: #fff; border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.09);
+      padding: 32px 28px; text-align: center;
+      border: 2px solid transparent;
+      transition: all .3s ease; height: 100%;
+      position: relative; overflow: hidden;
+    }
+    .pricing-card.featured {
+      border-color: #FFB800;
+      background: linear-gradient(135deg, #0a2744 0%, #1a3a5c 100%);
+      color: #fff;
+    }
+    .pricing-card.featured .pricing-name { color: rgba(255,255,255,.8); }
+    .pricing-card.featured .pricing-price { color: #FFB800; }
+    .pricing-card.featured .pricing-feature { color: rgba(255,255,255,.75); border-color: rgba(255,255,255,.1); }
+    .pricing-card.featured .pricing-feature i { color: #FFB800; }
+    .pricing-card:hover:not(.featured) { border-color: #FFB800; transform: translateY(-5px); }
+    .pricing-badge {
+      position: absolute; top: 14px; right: -28px;
+      background: #FFB800; color: #0a2744;
+      padding: 4px 36px; font-size: .72rem; font-weight: 800;
+      text-transform: uppercase; transform: rotate(45deg);
+      letter-spacing: 1px;
+    }
+    .pricing-name { font-size: .85rem; text-transform: uppercase; letter-spacing: 1.5px; color: #6b7280; margin-bottom: 10px; font-weight: 700; }
+    .pricing-price { font-size: 2.4rem; font-weight: 900; color: #0a2744; margin-bottom: 4px; line-height: 1; }
+    .pricing-price sup { font-size: 1.1rem; vertical-align: super; }
+    .pricing-price sub { font-size: .85rem; font-weight: 400; color: #6b7280; }
+    .pricing-desc { font-size: .85rem; color: #6b7280; margin-bottom: 20px; }
+    .pricing-feature { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f0f0f0; font-size: .86rem; color: #4b5563; }
+    .pricing-feature i { color: #10b981; font-size: .85rem; }
+  </style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <i class="fas fa-bolt preloader-icon"></i>
+    <div class="preloader-name">Bright Electricals</div>
+    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg site-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-wrap" href="index.html">
+      <div class="navbar-logo-icon"><i class="fas fa-bolt"></i></div>
+      <div>
+        <span class="navbar-brand-name">Bright Electricals</span>
+        <span class="navbar-brand-tagline">Powering Your World</span>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+      <ul class="navbar-nav align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link nav-cta" href="contact.html"><i class="fas fa-phone-alt me-1"></i>Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Banner -->
+<section class="page-banner">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h1 class="banner-title"><i class="fas fa-tools me-2" style="color:#FFB800;"></i>Our Services</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Services</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <span style="color:rgba(255,255,255,.6); font-size:.88rem;"><i class="fas fa-user-check me-1" style="color:#FFB800;"></i>ISI-Certified Electricians</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Intro Strip -->
+<div style="background:#fff; padding:28px 0; border-bottom:1px solid #e5e7eb;">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3">
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+          <i class="fas fa-certificate" style="color:#FFB800; font-size:1.6rem;"></i>
+          <div style="text-align:left;">
+            <div style="font-size:.82rem; font-weight:800; color:#0a2744; text-transform:uppercase; letter-spacing:.5px;">Certified</div>
+            <div style="font-size:.75rem; color:#6b7280;">ISI Licensed Electricians</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+          <i class="fas fa-clock" style="color:#FFB800; font-size:1.6rem;"></i>
+          <div style="text-align:left;">
+            <div style="font-size:.82rem; font-weight:800; color:#0a2744; text-transform:uppercase; letter-spacing:.5px;">Punctual</div>
+            <div style="font-size:.75rem; color:#6b7280;">On-Time Service Guarantee</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+          <i class="fas fa-rupee-sign" style="color:#FFB800; font-size:1.6rem;"></i>
+          <div style="text-align:left;">
+            <div style="font-size:.82rem; font-weight:800; color:#0a2744; text-transform:uppercase; letter-spacing:.5px;">Transparent</div>
+            <div style="font-size:.75rem; color:#6b7280;">No Hidden Charges</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+          <i class="fas fa-shield-alt" style="color:#FFB800; font-size:1.6rem;"></i>
+          <div style="text-align:left;">
+            <div style="font-size:.82rem; font-weight:800; color:#0a2744; text-transform:uppercase; letter-spacing:.5px;">Warranty</div>
+            <div style="font-size:.75rem; color:#6b7280;">1-Year Service Warranty</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Services -->
+<section class="section-padding" style="background:#f4f7fb;">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">Professional <span>Electrical Services</span></h2>
+      <div class="divider center"></div>
+      <p class="section-subtitle center">From household wiring to large-scale industrial electrical projects — we do it all with precision and care.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Electrical Installation -->
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-1">
+        <div class="service-hero-card">
+          <div class="card-top">
+            <i class="fas fa-plug"></i>
+            <h4>Electrical Installation</h4>
+            <p>Complete electrical installation for new homes, offices, and commercial buildings — from panel setup to last-point wiring.</p>
+          </div>
+          <div class="card-bot">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Main distribution board setup</li>
+              <li><i class="fas fa-check-circle"></i> MCB panel installation</li>
+              <li><i class="fas fa-check-circle"></i> Light points & fan points</li>
+              <li><i class="fas fa-check-circle"></i> Power socket installation</li>
+              <li><i class="fas fa-check-circle"></i> Earth leakage protection (ELCB)</li>
+            </ul>
+            <a href="contact.html" class="btn-sm-yellow"><i class="fas fa-paper-plane"></i> Book Service</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Home Wiring -->
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-2">
+        <div class="service-hero-card">
+          <div class="card-top">
+            <i class="fas fa-home"></i>
+            <h4>Home Wiring</h4>
+            <p>Full domestic wiring solutions for new constructions and rewiring of older homes using ISI-certified FR-PVC copper wires.</p>
+          </div>
+          <div class="card-bot">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> New construction wiring</li>
+              <li><i class="fas fa-check-circle"></i> Old wiring replacement</li>
+              <li><i class="fas fa-check-circle"></i> PVC conduit concealed wiring</li>
+              <li><i class="fas fa-check-circle"></i> Kitchen & bathroom wiring</li>
+              <li><i class="fas fa-check-circle"></i> Modular switchboard fitting</li>
+            </ul>
+            <a href="contact.html" class="btn-sm-yellow"><i class="fas fa-paper-plane"></i> Book Service</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repair Services -->
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-3">
+        <div class="service-hero-card">
+          <div class="card-top">
+            <i class="fas fa-wrench"></i>
+            <h4>Repair Services</h4>
+            <p>Fast and reliable repair of all electrical faults — short circuits, tripping MCBs, flickering lights, faulty sockets, and appliances.</p>
+          </div>
+          <div class="card-bot">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Short circuit diagnosis & repair</li>
+              <li><i class="fas fa-check-circle"></i> MCB & fuse replacement</li>
+              <li><i class="fas fa-check-circle"></i> Faulty socket / switch repair</li>
+              <li><i class="fas fa-check-circle"></i> Fan & light fixture repair</li>
+              <li><i class="fas fa-check-circle"></i> Emergency electrical repair</li>
+            </ul>
+            <a href="contact.html" class="btn-sm-yellow"><i class="fas fa-paper-plane"></i> Book Service</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inverter Setup -->
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-1">
+        <div class="service-hero-card">
+          <div class="card-top">
+            <i class="fas fa-car-battery"></i>
+            <h4>Inverter & UPS Setup</h4>
+            <p>Supply, installation, and maintenance of inverters, UPS systems, and battery banks for homes and businesses.</p>
+          </div>
+          <div class="card-bot">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Home inverter installation</li>
+              <li><i class="fas fa-check-circle"></i> Battery bank setup</li>
+              <li><i class="fas fa-check-circle"></i> UPS installation for offices</li>
+              <li><i class="fas fa-check-circle"></i> Battery replacement & disposal</li>
+              <li><i class="fas fa-check-circle"></i> Annual maintenance contracts</li>
+            </ul>
+            <a href="contact.html" class="btn-sm-yellow"><i class="fas fa-paper-plane"></i> Book Service</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Industrial Electrical -->
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-2">
+        <div class="service-hero-card">
+          <div class="card-top">
+            <i class="fas fa-industry"></i>
+            <h4>Industrial Electrical Work</h4>
+            <p>Large-scale electrical solutions for factories, warehouses, and commercial complexes — from HT/LT panels to machine wiring.</p>
+          </div>
+          <div class="card-bot">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> LT panel installation</li>
+              <li><i class="fas fa-check-circle"></i> Motor wiring & control</li>
+              <li><i class="fas fa-check-circle"></i> Power factor correction</li>
+              <li><i class="fas fa-check-circle"></i> Industrial lighting setup</li>
+              <li><i class="fas fa-check-circle"></i> Earthing & lightning protection</li>
+            </ul>
+            <a href="contact.html" class="btn-sm-yellow"><i class="fas fa-paper-plane"></i> Book Service</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- AMC -->
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-3">
+        <div class="service-hero-card">
+          <div class="card-top">
+            <i class="fas fa-file-contract"></i>
+            <h4>Annual Maintenance (AMC)</h4>
+            <p>Comprehensive Annual Maintenance Contracts for residential complexes, offices, and commercial properties at affordable rates.</p>
+          </div>
+          <div class="card-bot">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Quarterly electrical inspection</li>
+              <li><i class="fas fa-check-circle"></i> Preventive maintenance visits</li>
+              <li><i class="fas fa-check-circle"></i> Priority emergency response</li>
+              <li><i class="fas fa-check-circle"></i> Free minor repairs</li>
+              <li><i class="fas fa-check-circle"></i> Dedicated service engineer</li>
+            </ul>
+            <a href="contact.html" class="btn-sm-yellow"><i class="fas fa-paper-plane"></i> Get Quote</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section-padding" style="background:#fff;">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="section-tag">Our Process</span>
+      <h2 class="section-title">How It <span>Works</span></h2>
+      <div class="divider center"></div>
+      <p class="section-subtitle center">Simple, transparent, and hassle-free service booking.</p>
+    </div>
+    <div class="row g-3 justify-content-center">
+      <div class="col-md-10">
+        <div class="row g-3">
+          <div class="col-sm-6 reveal reveal-delay-1">
+            <div class="process-step">
+              <div class="step-num">1</div>
+              <div>
+                <h5>Contact Us</h5>
+                <p>Call, WhatsApp, or fill the contact form with your service requirement and location details.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 reveal reveal-delay-2">
+            <div class="process-step">
+              <div class="step-num">2</div>
+              <div>
+                <h5>Free Site Visit</h5>
+                <p>Our technician visits your site to assess the work scope and provide a transparent, detailed quotation.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 reveal reveal-delay-3">
+            <div class="process-step">
+              <div class="step-num">3</div>
+              <div>
+                <h5>Service Execution</h5>
+                <p>Upon approval, our certified electricians carry out the work professionally with minimum disruption.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 reveal reveal-delay-4">
+            <div class="process-step">
+              <div class="step-num">4</div>
+              <div>
+                <h5>Quality Check & Warranty</h5>
+                <p>We test all completed work before handover and provide a 1-year warranty on all our services.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Plans -->
+<section class="section-padding" style="background:#f4f7fb;">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="section-tag">AMC Plans</span>
+      <h2 class="section-title">Annual Maintenance <span>Plans</span></h2>
+      <div class="divider center"></div>
+      <p class="section-subtitle center">Protect your electrical systems with our affordable AMC packages.</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4 reveal reveal-delay-1">
+        <div class="pricing-card">
+          <div class="pricing-name">Basic Plan</div>
+          <div class="pricing-price"><sup>₹</sup>2,999<sub>/year</sub></div>
+          <p class="pricing-desc">For single residential units</p>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> 2 inspection visits/year</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> Free minor repairs</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> Priority call support</div>
+          <div class="pricing-feature"><i class="fas fa-times-circle" style="color:#ef4444;"></i> Emergency visits</div>
+          <div class="pricing-feature"><i class="fas fa-times-circle" style="color:#ef4444;"></i> Dedicated engineer</div>
+          <div class="mt-4">
+            <a href="contact.html" class="btn-primary-dark" style="width:100%; justify-content:center; border-radius:8px;">Get Started</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal reveal-delay-2">
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Popular</div>
+          <div class="pricing-name">Standard Plan</div>
+          <div class="pricing-price"><sup>₹</sup>5,999<sub>/year</sub></div>
+          <p class="pricing-desc">For apartments & small offices</p>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> 4 inspection visits/year</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> Free minor repairs</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> 24/7 call support</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> 2 emergency visits</div>
+          <div class="pricing-feature"><i class="fas fa-times-circle" style="color:rgba(255,255,255,.3);"></i> Dedicated engineer</div>
+          <div class="mt-4">
+            <a href="contact.html" class="btn-yellow" style="width:100%; justify-content:center; border-radius:8px;">Get Started</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal reveal-delay-3">
+        <div class="pricing-card">
+          <div class="pricing-name">Premium Plan</div>
+          <div class="pricing-price"><sup>₹</sup>12,999<sub>/year</sub></div>
+          <p class="pricing-desc">For commercial properties & factories</p>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> Monthly inspections (12)</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> All repairs included</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> 24/7 emergency response</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> Unlimited emergency visits</div>
+          <div class="pricing-feature"><i class="fas fa-check-circle"></i> Dedicated service engineer</div>
+          <div class="mt-4">
+            <a href="contact.html" class="btn-primary-dark" style="width:100%; justify-content:center; border-radius:8px;">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="text-center mt-3" style="font-size:.84rem; color:#6b7280;">* All prices are excluding GST. Custom plans available for large projects. <a href="contact.html" style="color:#FFB800; font-weight:600;">Contact us</a> for a custom quote.</p>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section-padding" style="background:#fff;">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="section-tag">Client Feedback</span>
+      <h2 class="section-title">What Our <span>Service Clients Say</span></h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 reveal reveal-delay-1">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">The wiring team did a fantastic job on our 3BHK flat. Neat, clean work with PVC conduit. They even tested every point before leaving. Very professional and on-time.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">VS</div>
+            <div><div class="author-name">Vijay Shankar</div><div class="author-role">Home Owner, Adyar</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal reveal-delay-2">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">We had a short circuit emergency on a Sunday. Bright Electricals responded within 2 hours and fixed the issue completely. Excellent emergency service!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div><div class="author-name">Malathi Rajan</div><div class="author-role">Apartment Owner, T. Nagar</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal reveal-delay-3">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Our factory's electrical AMC is with Bright Electricals. Their quarterly inspections catch problems before they become costly. Highly recommend their premium plan.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">GK</div>
+            <div><div class="author-name">Gopal Krishnamurthy</div><div class="author-role">Factory Owner, Ambattur</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container text-center position-relative">
+    <div class="reveal">
+      <span class="section-tag" style="color:#FFB800; border-color:rgba(255,184,0,.4); background:rgba(255,184,0,.1);">Book a Service</span>
+      <h2 class="cta-title mt-2">Need a Professional Electrician?</h2>
+      <p class="cta-sub mb-5 mx-auto">Call us or send an enquiry and our team will reach you within 24 hours.</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="contact.html" class="btn-yellow"><i class="fas fa-phone-alt"></i> Book Now</a>
+        <a href="tel:+919876543210" class="btn-outline-white"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-logo-icon"><i class="fas fa-bolt"></i></div>
+        <span class="footer-brand-name">Bright Electricals</span>
+        <p class="footer-about">Your trusted partner for all electrical needs. Premium-quality products and professional services since 2005.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-6">
+        <h5 class="footer-heading">Quick Links</h5>
+        <ul class="footer-list">
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i>Home</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Products</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i>Services</a></li>
+          <li><a href="gallery.html"><i class="fas fa-chevron-right"></i>Gallery</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i>About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i>Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 col-6">
+        <h5 class="footer-heading">Our Services</h5>
+        <ul class="footer-list">
+          <li><a href="#"><i class="fas fa-chevron-right"></i>Home Wiring</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i>Installation</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i>Repair Services</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i>Inverter Setup</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i>Industrial Work</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i>AMC Plans</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-heading">Contact Us</h5>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="info">No. 45, Anna Salai, Near Bus Stand,<br>Chennai – 600 002, Tamil Nadu</div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="info"><a href="tel:+914412345678" style="color:rgba(255,255,255,.65);">+91 44 1234 5678</a></div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+          <div class="info"><a href="mailto:info@brightelectricals.com" style="color:rgba(255,255,255,.65);">info@brightelectricals.com</a></div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon"><i class="fas fa-clock"></i></div>
+          <div class="info">Mon – Sat: 9:00 AM – 8:00 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="mb-0">© 2024 <a href="index.html">Bright Electricals</a>. All rights reserved.</p>
+  </div>
+</footer>
+
+<button id="scrollTop" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
