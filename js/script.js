@@ -1,176 +1,180 @@
 /* ============================================================
    BRIGHT ELECTRICALS — Main JavaScript
+   Crompton + Anchor/Panasonic inspired design
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ── Preloader ── */
-  const preloader = document.getElementById('preloader');
-  if (preloader) {
-    window.addEventListener('load', function () {
-      setTimeout(() => {
-        preloader.classList.add('hidden');
-      }, 700);
-    });
-    // Fallback in case load already fired
-    if (document.readyState === 'complete') {
-      setTimeout(() => preloader.classList.add('hidden'), 700);
-    }
+  const pl = document.getElementById('preloader');
+  if (pl) {
+    const hide = () => { pl.classList.add('hidden'); };
+    if (document.readyState === 'complete') { setTimeout(hide, 600); }
+    else { window.addEventListener('load', () => setTimeout(hide, 600)); }
   }
 
-  /* ── Sticky Navbar ── */
+  /* ── Navbar scroll ── */
   const navbar = document.querySelector('.site-navbar');
   if (navbar) {
-    const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
   }
 
-  /* ── Active Nav Link ── */
+  /* ── Mobile menu toggle ── */
+  const toggler = document.getElementById('nbToggler');
+  const mobileMenu = document.getElementById('nbMobile');
+  if (toggler && mobileMenu) {
+    toggler.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      toggler.classList.toggle('active');
+    });
+    // close on link click
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        toggler.classList.remove('active');
+      });
+    });
+  }
+
+  /* ── Active nav link ── */
   const page = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.site-navbar .nav-link').forEach(link => {
+  document.querySelectorAll('.nb-link, .nb-mobile a').forEach(link => {
     const href = link.getAttribute('href');
-    if (href === page || (page === '' && href === 'index.html')) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    if (href === page || (page === '' && href === 'index.html')) link.classList.add('active');
+    else link.classList.remove('active');
   });
 
-  /* ── Scroll-to-Top ── */
+  /* ── Scroll to top ── */
   const scrollBtn = document.getElementById('scrollTop');
   if (scrollBtn) {
-    window.addEventListener('scroll', () => {
-      scrollBtn.classList.toggle('visible', window.scrollY > 320);
-    }, { passive: true });
+    window.addEventListener('scroll', () => scrollBtn.classList.toggle('visible', window.scrollY > 320), { passive: true });
     scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
-  /* ── Scroll Reveal Animations ── */
-  const revealEls = document.querySelectorAll('.reveal');
-  if (revealEls.length) {
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); } });
+  /* ── Scroll reveal ── */
+  const revEls = document.querySelectorAll('.reveal');
+  if (revEls.length) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => revealObs.observe(el));
+    revEls.forEach(el => obs.observe(el));
   }
 
-  /* ── Counter Animation ── */
+  /* ── Counter animation ── */
   const counters = document.querySelectorAll('.counter');
   if (counters.length) {
-    const ctrObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          animateCounter(e.target);
-          ctrObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(el => ctrObs.observe(el));
+    const cobs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); cobs.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    counters.forEach(el => cobs.observe(el));
   }
-
   function animateCounter(el) {
-    const target = parseInt(el.getAttribute('data-target'), 10);
-    const suffix = el.getAttribute('data-suffix') || '';
-    const duration = 2000;
-    const start = performance.now();
-    const update = (now) => {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1800; const start = performance.now();
+    const run = now => {
+      const p = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
       el.textContent = Math.floor(ease * target) + suffix;
-      if (progress < 1) requestAnimationFrame(update);
+      if (p < 1) requestAnimationFrame(run);
       else el.textContent = target + suffix;
     };
-    requestAnimationFrame(update);
+    requestAnimationFrame(run);
   }
 
-  /* ── Gallery Filter ── */
-  const galFilters = document.querySelectorAll('.gal-filter');
-  const galItems   = document.querySelectorAll('.gallery-item-wrap');
-  if (galFilters.length) {
-    galFilters.forEach(btn => {
-      btn.addEventListener('click', function () {
-        galFilters.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        const cat = this.dataset.filter;
-        galItems.forEach(item => {
-          const show = cat === 'all' || item.dataset.category === cat;
-          item.style.display = show ? 'block' : 'none';
-          if (show) { item.style.animation = 'none'; item.offsetHeight; item.style.animation = ''; }
-        });
-      });
-    });
-  }
-
-  /* ── Product Search ── */
-  const searchInput = document.getElementById('productSearch');
-  if (searchInput) {
-    searchInput.addEventListener('input', function () {
-      const q = this.value.toLowerCase().trim();
-      document.querySelectorAll('.prod-card-wrap').forEach(wrap => {
-        const name = (wrap.querySelector('.prod-name')?.textContent || '').toLowerCase();
-        const desc = (wrap.querySelector('.prod-desc')?.textContent || '').toLowerCase();
-        wrap.style.display = (!q || name.includes(q) || desc.includes(q)) ? '' : 'none';
+  /* ── Product tabs (home/products) ── */
+  document.querySelectorAll('.ptab').forEach(tab => {
+    tab.addEventListener('click', function () {
+      const group = this.closest('.ptabs-group');
+      if (!group) return;
+      group.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      const cat = this.dataset.tab;
+      const grid = group.nextElementSibling || document.getElementById('productsGrid');
+      if (!grid) return;
+      grid.querySelectorAll('.prod-card-wrap').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
       });
       updateResultCount();
     });
-  }
+  });
 
-  /* ── Category Filter (Products page) ── */
+  /* ── Category filter ── */
   document.querySelectorAll('.cat-list a').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
       document.querySelectorAll('.cat-list a').forEach(l => l.classList.remove('active'));
       this.classList.add('active');
       const cat = this.dataset.category;
-      document.querySelectorAll('.prod-card-wrap').forEach(wrap => {
-        wrap.style.display = (cat === 'all' || wrap.dataset.category === cat) ? '' : 'none';
+      document.querySelectorAll('.prod-card-wrap').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
       });
       updateResultCount();
     });
   });
 
-  function updateResultCount() {
-    const countEl = document.getElementById('resultCount');
-    if (!countEl) return;
-    const visible = document.querySelectorAll('.prod-card-wrap:not([style*="none"])').length;
-    countEl.textContent = visible;
+  /* ── Gallery filter ── */
+  document.querySelectorAll('.gal-filter').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.gal-filter').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const f = this.dataset.filter;
+      document.querySelectorAll('.gallery-item-wrap').forEach(item => {
+        item.style.display = (f === 'all' || item.dataset.category === f) ? '' : 'none';
+      });
+    });
+  });
+
+  /* ── Product search ── */
+  const searchInput = document.getElementById('productSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', function () {
+      const q = this.value.toLowerCase().trim();
+      document.querySelectorAll('.prod-card-wrap').forEach(card => {
+        const name = (card.querySelector('.pc-name')?.textContent || '').toLowerCase();
+        const desc = (card.querySelector('.pc-desc')?.textContent || '').toLowerCase();
+        card.style.display = (!q || name.includes(q) || desc.includes(q)) ? '' : 'none';
+      });
+      updateResultCount();
+    });
   }
 
-  /* ── Sort Products ── */
-  const sortSelect = document.getElementById('sortProducts');
-  if (sortSelect) {
-    sortSelect.addEventListener('change', function () {
+  /* ── Sort products ── */
+  const sortSel = document.getElementById('sortProducts');
+  if (sortSel) {
+    sortSel.addEventListener('change', function () {
       const grid = document.getElementById('productsGrid');
       if (!grid) return;
       const cards = [...grid.querySelectorAll('.prod-card-wrap')];
       cards.sort((a, b) => {
-        const priceA = parseFloat(a.dataset.price || 0);
-        const priceB = parseFloat(b.dataset.price || 0);
-        const nameA  = a.dataset.name || '';
-        const nameB  = b.dataset.name || '';
-        if (this.value === 'price-asc')  return priceA - priceB;
-        if (this.value === 'price-desc') return priceB - priceA;
-        if (this.value === 'name-asc')   return nameA.localeCompare(nameB);
-        if (this.value === 'name-desc')  return nameB.localeCompare(nameA);
+        const pa = parseFloat(a.dataset.price || 0), pb = parseFloat(b.dataset.price || 0);
+        const na = a.dataset.name || '', nb = b.dataset.name || '';
+        if (this.value === 'price-asc') return pa - pb;
+        if (this.value === 'price-desc') return pb - pa;
+        if (this.value === 'name-asc') return na.localeCompare(nb);
+        if (this.value === 'name-desc') return nb.localeCompare(na);
         return 0;
       });
       cards.forEach(c => grid.appendChild(c));
     });
   }
 
-  /* ── Quantity Selector ── */
-  const qtyMinus = document.querySelector('.qty-minus');
-  const qtyPlus  = document.querySelector('.qty-plus');
-  const qtyNum   = document.querySelector('.qty-num');
-  if (qtyMinus && qtyPlus && qtyNum) {
-    qtyMinus.addEventListener('click', () => { const v = parseInt(qtyNum.value); if (v > 1) qtyNum.value = v - 1; });
-    qtyPlus.addEventListener('click',  () => { const v = parseInt(qtyNum.value); if (v < 99) qtyNum.value = v + 1; });
-    qtyNum.addEventListener('blur', () => { const v = parseInt(qtyNum.value); qtyNum.value = (isNaN(v) || v < 1) ? 1 : Math.min(v, 99); });
+  function updateResultCount() {
+    const el = document.getElementById('resultCount');
+    if (el) el.textContent = document.querySelectorAll('.prod-card-wrap:not([style*="none"])').length;
   }
 
-  /* ── Thumbnail Switcher ── */
+  /* ── Quantity selector ── */
+  const qMinus = document.querySelector('.qty-minus');
+  const qPlus  = document.querySelector('.qty-plus');
+  const qNum   = document.querySelector('.qty-num');
+  if (qMinus && qPlus && qNum) {
+    qMinus.addEventListener('click', () => { const v = parseInt(qNum.value); if (v > 1) qNum.value = v - 1; });
+    qPlus.addEventListener('click',  () => { const v = parseInt(qNum.value); if (v < 99) qNum.value = v + 1; });
+    qNum.addEventListener('blur', () => { const v = parseInt(qNum.value); qNum.value = (isNaN(v)||v<1)?1:Math.min(v,99); });
+  }
+
+  /* ── Thumbnail switcher ── */
   const thumbs = document.querySelectorAll('.thumb-tile');
   const mainIcon = document.getElementById('mainProductIcon');
   if (thumbs.length && mainIcon) {
@@ -179,106 +183,89 @@ document.addEventListener('DOMContentLoaded', function () {
         thumbs.forEach(x => x.classList.remove('active'));
         this.classList.add('active');
         const ic = this.dataset.icon;
-        if (ic) { mainIcon.className = ''; mainIcon.className = ic; }
+        if (ic) { mainIcon.className = ic; }
       });
     });
   }
 
-  /* ── Enquiry Button Toast ── */
-  const enquiryBtn = document.getElementById('enquiryBtn');
-  if (enquiryBtn) {
-    enquiryBtn.addEventListener('click', function () {
-      showToast('Enquiry sent! We will contact you shortly.', 'success');
-    });
-  }
+  /* ── Enquiry button ── */
+  const enqBtn = document.getElementById('enquiryBtn');
+  if (enqBtn) { enqBtn.addEventListener('click', () => showToast('Enquiry sent! We will contact you shortly.', 'success')); }
 
-  /* ── Contact Form Validation ── */
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
+  /* ── Contact form ── */
+  const cf = document.getElementById('contactForm');
+  if (cf) {
+    cf.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (validateContactForm()) {
-        const successAlert = document.getElementById('successAlert');
-        if (successAlert) { successAlert.style.display = 'block'; }
+      if (validateForm()) {
+        const sa = document.getElementById('successAlert');
+        if (sa) sa.style.display = 'flex';
         this.reset();
-        showToast('Message sent successfully! We will get back to you soon.', 'success');
-        setTimeout(() => { if (successAlert) successAlert.style.display = 'none'; }, 5000);
+        showToast('Message sent! We will get back to you within 24 hours.', 'success');
+        setTimeout(() => { if (sa) sa.style.display = 'none'; }, 5000);
       }
     });
-
-    // Live validation
-    contactForm.querySelectorAll('input, textarea, select').forEach(input => {
-      input.addEventListener('input', () => clearError(input));
+    cf.querySelectorAll('input, textarea, select').forEach(inp => {
+      inp.addEventListener('input', () => clearErr(inp));
     });
   }
 
-  function validateContactForm() {
-    let valid = true;
-
+  function validateForm() {
+    let ok = true;
     const name = document.getElementById('cName');
-    if (!name || name.value.trim().length < 2) { showError(name, 'cNameErr', 'Please enter a valid name (min 2 chars).'); valid = false; }
-    else clearError(name, 'cNameErr');
-
+    if (!name || name.value.trim().length < 2) { showErr(name, 'cNameErr', 'Please enter your name (min 2 chars).'); ok = false; }
+    else clearErr(name, 'cNameErr');
     const email = document.getElementById('cEmail');
-    const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRx.test(email.value.trim())) { showError(email, 'cEmailErr', 'Please enter a valid email address.'); valid = false; }
-    else clearError(email, 'cEmailErr');
-
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { showErr(email, 'cEmailErr', 'Please enter a valid email.'); ok = false; }
+    else clearErr(email, 'cEmailErr');
     const phone = document.getElementById('cPhone');
-    const phoneRx = /^[0-9\s\-+()]{7,15}$/;
-    if (phone && phone.value.trim() && !phoneRx.test(phone.value.trim())) { showError(phone, 'cPhoneErr', 'Please enter a valid phone number.'); valid = false; }
-    else if (phone) clearError(phone, 'cPhoneErr');
-
+    if (phone && phone.value.trim() && !/^[0-9\s\-+()]{7,15}$/.test(phone.value.trim())) { showErr(phone, 'cPhoneErr', 'Enter a valid phone number.'); ok = false; }
+    else if (phone) clearErr(phone, 'cPhoneErr');
     const msg = document.getElementById('cMessage');
-    if (!msg || msg.value.trim().length < 10) { showError(msg, 'cMsgErr', 'Message must be at least 10 characters.'); valid = false; }
-    else clearError(msg, 'cMsgErr');
-
-    return valid;
+    if (!msg || msg.value.trim().length < 10) { showErr(msg, 'cMsgErr', 'Message must be at least 10 characters.'); ok = false; }
+    else clearErr(msg, 'cMsgErr');
+    return ok;
+  }
+  function showErr(inp, id, msg) {
+    if (inp) inp.classList.add('is-error');
+    const el = document.getElementById(id); if (el) { el.textContent = msg; el.classList.add('show'); }
+  }
+  function clearErr(inp, id) {
+    if (inp) inp.classList.remove('is-error');
+    const eid = id || (inp && inp.id ? inp.id + 'Err' : null);
+    if (eid) { const el = document.getElementById(eid); if (el) el.classList.remove('show'); }
   }
 
-  function showError(input, errId, msg) {
-    if (input) input.classList.add('is-error');
-    const errEl = document.getElementById(errId);
-    if (errEl) { errEl.textContent = msg; errEl.classList.add('show'); }
-  }
-
-  function clearError(input, errId) {
-    if (input) input.classList.remove('is-error');
-    const id = errId || (input && input.id ? input.id + 'Err' : null);
-    if (id) { const el = document.getElementById(id); if (el) el.classList.remove('show'); }
-  }
-
-  /* ── Toast Notification ── */
-  function showToast(message, type = 'success') {
-    const existing = document.querySelector('.be-toast');
-    if (existing) existing.remove();
-
-    const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
-    const bg   = type === 'success' ? '#10b981' : '#ef4444';
-
-    const toast = document.createElement('div');
-    toast.className = 'be-toast';
-    toast.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
-    toast.style.cssText = `
-      position:fixed; bottom:80px; right:28px; z-index:9990;
-      background:${bg}; color:#fff; padding:14px 20px; border-radius:10px;
-      display:flex; align-items:center; gap:10px; font-weight:600; font-size:.9rem;
-      box-shadow:0 6px 24px rgba(0,0,0,.2); max-width:320px;
-      animation:fadeSlideDown .35s ease;
-    `;
-    document.body.appendChild(toast);
-    setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity .4s'; setTimeout(() => toast.remove(), 400); }, 3500);
-  }
-
-  /* ── Navbar collapse on link click (mobile) ── */
-  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      const toggler = document.querySelector('.navbar-toggler');
-      const collapse = document.querySelector('.navbar-collapse');
-      if (toggler && collapse && collapse.classList.contains('show')) {
-        toggler.click();
-      }
+  /* ── FAQ ── */
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', function () {
+      const isOpen = this.classList.contains('open');
+      document.querySelectorAll('.faq-q').forEach(x => { x.classList.remove('open'); x.nextElementSibling.classList.remove('open'); });
+      if (!isOpen) { this.classList.add('open'); this.nextElementSibling.classList.add('open'); }
     });
   });
+
+  /* ── Newsletter form ── */
+  const nlForm = document.getElementById('newsletterForm');
+  if (nlForm) {
+    nlForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      showToast('Thank you for subscribing!', 'success');
+      this.reset();
+    });
+  }
+
+  /* ── Toast ── */
+  function showToast(msg, type = 'success') {
+    document.querySelector('.be-toast')?.remove();
+    const bg = type === 'success' ? '#10B981' : '#EF4444';
+    const ic = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+    const t = document.createElement('div');
+    t.className = 'be-toast';
+    t.innerHTML = `<i class="fas ${ic}"></i> ${msg}`;
+    t.style.cssText = `background:${bg};color:#fff;`;
+    document.body.appendChild(t);
+    setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .4s'; setTimeout(() => t.remove(), 400); }, 3500);
+  }
 
 });

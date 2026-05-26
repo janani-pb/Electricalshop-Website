@@ -1,372 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Contact Us — Bright Electricals</title>
-  <meta name="description" content="Contact Bright Electricals — visit our store, call us, or send an enquiry. We're here to help." />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <style>
-    body { font-family: 'Inter', 'Segoe UI', sans-serif; }
-
-    /* Map embed */
-    .map-frame-wrap {
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,.1);
-      height: 380px;
-      background: linear-gradient(135deg, #ecf1f7, #dce5ef);
-      position: relative;
-    }
-    .map-frame-wrap iframe {
-      width: 100%; height: 100%;
-      border: none; display: block;
-    }
-
-    /* FAQ */
-    .faq-item {
-      background: #fff;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,.07);
-      overflow: hidden;
-    }
-    .faq-question {
-      padding: 18px 22px;
-      font-size: .93rem; font-weight: 600; color: #0a2744;
-      cursor: pointer; display: flex; align-items: center; justify-content: space-between;
-      transition: all .3s; user-select: none;
-    }
-    .faq-question:hover { color: #FFB800; }
-    .faq-question .faq-icon { font-size: .85rem; color: #FFB800; transition: transform .3s; }
-    .faq-question.open .faq-icon { transform: rotate(180deg); }
-    .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height .4s ease, padding .3s ease;
-      font-size: .88rem; color: #6b7280; line-height: 1.75;
-      padding: 0 22px;
-    }
-    .faq-answer.open { max-height: 200px; padding: 0 22px 18px; }
-
-    /* Social card */
-    .social-card {
-      background: #fff; border-radius: 12px; padding: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,.08);
-      display: flex; align-items: center; gap: 14px;
-      transition: all .3s; text-decoration: none; color: inherit;
-    }
-    .social-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,.15); color: inherit; }
-    .social-card .sc-icon {
-      width: 48px; height: 48px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; color: #fff; flex-shrink: 0;
-    }
-    .social-card h6 { font-size: .88rem; color: #0a2744; margin-bottom: 2px; font-weight: 700; }
-    .social-card span { font-size: .78rem; color: #6b7280; }
-  </style>
+  <meta name="description" content="Contact Bright Electricals Chennai — call, email, or visit us for all your electrical product and service needs."/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
-<!-- Preloader -->
+<!-- PRELOADER -->
 <div id="preloader">
-  <div class="preloader-inner">
-    <i class="fas fa-bolt preloader-icon"></i>
-    <div class="preloader-name">Bright Electricals</div>
-    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+  <div class="pl-inner">
+    <div class="pl-logo"><i class="fas fa-bolt"></i></div>
+    <div class="pl-brand">Bright Electricals</div>
+    <div class="pl-tag">Powering Your World</div>
+    <div class="pl-bar"><div class="pl-bar-fill"></div></div>
   </div>
 </div>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg site-navbar sticky-top">
+<!-- TOP BAR -->
+<div class="top-bar d-none d-md-block">
   <div class="container">
-    <a class="navbar-brand navbar-brand-wrap" href="index.html">
-      <div class="navbar-logo-icon"><i class="fas fa-bolt"></i></div>
-      <div>
-        <span class="navbar-brand-name">Bright Electricals</span>
-        <span class="navbar-brand-tagline">Powering Your World</span>
+    <div class="top-bar-left">
+      <a href="tel:+914412345678"><i class="fas fa-phone-alt"></i> +91 44 1234 5678</a>
+      <a href="mailto:info@brightelectricals.com"><i class="fas fa-envelope"></i> info@brightelectricals.com</a>
+      <span><i class="fas fa-map-marker-alt" style="color:var(--orange);"></i> No.45 Anna Salai, Chennai</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="site-navbar" id="siteNavbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand-wrap">
+        <div class="nb-logo"><i class="fas fa-bolt"></i></div>
+        <div>
+          <span class="nb-brand-name">Bright Electricals</span>
+          <span class="nb-tagline">Powering Your World</span>
+        </div>
+      </a>
+      <div class="nb-links">
+        <a href="index.html" class="nb-link">Home</a>
+        <a href="products.html" class="nb-link">Products</a>
+        <a href="services.html" class="nb-link">Services</a>
+        <a href="gallery.html" class="nb-link">Gallery</a>
+        <a href="about.html" class="nb-link">About</a>
       </div>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="mainNav">
-      <ul class="navbar-nav align-items-lg-center gap-lg-1">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
-        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link nav-cta active" href="contact.html"><i class="fas fa-phone-alt me-1"></i>Contact Us</a></li>
-      </ul>
+      <div class="nb-actions">
+        <a href="tel:+919876543210" class="nb-icon-btn d-none d-lg-flex" title="Call"><i class="fas fa-phone-alt"></i></a>
+        <a href="https://wa.me/919876543210" target="_blank" class="nb-icon-btn d-none d-lg-flex" title="WhatsApp" style="color:#25d366;"><i class="fab fa-whatsapp"></i></a>
+        <a href="contact.html" class="nb-cta">Get Quote</a>
+        <button class="nb-toggler" id="nbToggler" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nb-mobile" id="nbMobile">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html" class="active">Contact Us</a>
     </div>
   </div>
 </nav>
 
-<!-- Page Banner -->
+<!-- PAGE BANNER -->
 <section class="page-banner">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8">
-        <h1 class="banner-title"><i class="fas fa-envelope-open-text me-2" style="color:#FFB800;"></i>Contact Us</h1>
+        <h1 class="banner-title"><i class="fas fa-envelope-open-text me-2" style="color:var(--orange);"></i>Contact Us</h1>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Contact Us</li>
+            <li class="breadcrumb-item active">Contact</li>
           </ol>
         </nav>
       </div>
       <div class="col-md-4 text-md-end mt-3 mt-md-0">
-        <span style="color:rgba(255,255,255,.6); font-size:.88rem;"><i class="fas fa-headset me-1" style="color:#FFB800;"></i>We respond within 24 hours</span>
+        <span style="color:rgba(255,255,255,.65);font-size:.88rem;"><i class="fas fa-clock me-1" style="color:var(--orange);"></i>Response within 2 hours</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Quick Contact Strip -->
-<div style="background:#fff; border-bottom:1px solid #e5e7eb; padding:22px 0;">
+<!-- QUICK CONTACT CARDS -->
+<section style="background:#f4f7fb;padding:52px 0;">
   <div class="container">
-    <div class="row g-3 text-center text-md-start">
-      <div class="col-md-4">
-        <a href="tel:+914412345678" style="display:flex; align-items:center; justify-content:center; gap:12px; text-decoration:none; color:inherit;">
-          <div style="width:46px; height:46px; background:rgba(255,184,0,.1); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <i class="fas fa-phone-alt" style="color:#FFB800; font-size:1.1rem;"></i>
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div style="background:#fff;border-radius:16px;padding:32px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.07);border-top:4px solid var(--orange);height:100%;">
+          <div style="width:56px;height:56px;background:rgba(232,67,26,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <i class="fas fa-phone-alt" style="color:var(--orange);font-size:1.3rem;"></i>
           </div>
-          <div>
-            <div style="font-size:.75rem; color:#6b7280; font-weight:600; text-transform:uppercase; letter-spacing:.8px;">Call Us Now</div>
-            <div style="font-size:1rem; font-weight:800; color:#0a2744;">+91 44 1234 5678</div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4">
-        <a href="mailto:info@brightelectricals.com" style="display:flex; align-items:center; justify-content:center; gap:12px; text-decoration:none; color:inherit;">
-          <div style="width:46px; height:46px; background:rgba(255,184,0,.1); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <i class="fas fa-envelope" style="color:#FFB800; font-size:1.1rem;"></i>
-          </div>
-          <div>
-            <div style="font-size:.75rem; color:#6b7280; font-weight:600; text-transform:uppercase; letter-spacing:.8px;">Email Us</div>
-            <div style="font-size:.95rem; font-weight:700; color:#0a2744;">info@brightelectricals.com</div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4">
-        <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
-          <div style="width:46px; height:46px; background:rgba(255,184,0,.1); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <i class="fas fa-clock" style="color:#FFB800; font-size:1.1rem;"></i>
-          </div>
-          <div>
-            <div style="font-size:.75rem; color:#6b7280; font-weight:600; text-transform:uppercase; letter-spacing:.8px;">Working Hours</div>
-            <div style="font-size:.95rem; font-weight:700; color:#0a2744;">Mon–Sat: 9AM – 8PM</div>
-          </div>
+          <h6 style="color:var(--navy);font-weight:700;margin-bottom:10px;">Call Us</h6>
+          <p style="font-size:.84rem;color:#6b7280;margin-bottom:14px;line-height:1.6;">Mon–Sat 9AM–8PM</p>
+          <a href="tel:+914412345678" style="display:block;color:var(--orange);font-weight:700;font-size:.95rem;text-decoration:none;">+91 44 1234 5678</a>
+          <a href="tel:+919876543210" style="display:block;color:var(--navy);font-weight:600;font-size:.88rem;text-decoration:none;margin-top:4px;">+91 98765 43210</a>
         </div>
       </div>
+
+      <div class="col-sm-6 col-lg-3 reveal reveal-delay-1">
+        <div style="background:#fff;border-radius:16px;padding:32px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.07);border-top:4px solid #25d366;height:100%;">
+          <div style="width:56px;height:56px;background:rgba(37,211,102,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <i class="fab fa-whatsapp" style="color:#25d366;font-size:1.3rem;"></i>
+          </div>
+          <h6 style="color:var(--navy);font-weight:700;margin-bottom:10px;">WhatsApp</h6>
+          <p style="font-size:.84rem;color:#6b7280;margin-bottom:14px;line-height:1.6;">Chat with us any time</p>
+          <a href="https://wa.me/919876543210" target="_blank" style="display:block;color:#25d366;font-weight:700;font-size:.95rem;text-decoration:none;">+91 98765 43210</a>
+          <span style="font-size:.8rem;color:#9ca3af;">Instant reply guaranteed</span>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3 reveal reveal-delay-2">
+        <div style="background:#fff;border-radius:16px;padding:32px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.07);border-top:4px solid var(--navy);height:100%;">
+          <div style="width:56px;height:56px;background:rgba(11,29,53,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <i class="fas fa-envelope" style="color:var(--navy);font-size:1.3rem;"></i>
+          </div>
+          <h6 style="color:var(--navy);font-weight:700;margin-bottom:10px;">Email Us</h6>
+          <p style="font-size:.84rem;color:#6b7280;margin-bottom:14px;line-height:1.6;">Reply within 24 hours</p>
+          <a href="mailto:info@brightelectricals.com" style="display:block;color:var(--navy);font-weight:700;font-size:.85rem;text-decoration:none;word-break:break-all;">info@brightelectricals.com</a>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3 reveal reveal-delay-3">
+        <div style="background:#fff;border-radius:16px;padding:32px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.07);border-top:4px solid #f59e0b;height:100%;">
+          <div style="width:56px;height:56px;background:rgba(245,158,11,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <i class="fas fa-map-marker-alt" style="color:#f59e0b;font-size:1.3rem;"></i>
+          </div>
+          <h6 style="color:var(--navy);font-weight:700;margin-bottom:10px;">Visit Us</h6>
+          <p style="font-size:.84rem;color:#6b7280;margin-bottom:0;line-height:1.7;">No. 45, Anna Salai,<br>Near Bus Stand,<br>Chennai – 600 002, TN</p>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
+</section>
 
-<!-- Main Contact Section -->
-<section class="section-padding" style="background:#f4f7fb;">
+<!-- FORM + INFO -->
+<section class="section-padding" style="background:#fff;">
   <div class="container">
     <div class="row g-5">
 
-      <!-- Left: Info -->
-      <div class="col-lg-5">
+      <!-- Contact Form -->
+      <div class="col-lg-7 reveal">
+        <div class="eyebrow">Get In Touch</div>
+        <h2 class="section-h mt-2">Send Us a <span style="color:var(--orange);">Message</span></h2>
+        <div class="divider"></div>
+        <p style="color:#6b7280;font-size:.93rem;line-height:1.7;margin-bottom:32px;">Have a product question, need a service quote, or want to place a bulk order? Fill in the form — our team replies within 2 hours on business days.</p>
 
-        <!-- Address -->
-        <div class="section-header reveal">
-          <span class="section-tag">Get In Touch</span>
-          <h2 class="section-title">Visit Our <span>Showroom</span></h2>
-          <div class="divider"></div>
-          <p style="color:#4b5563; font-size:.93rem; line-height:1.8;">We'd love to hear from you. Visit our showroom, give us a call, or send us a message and we'll respond as soon as possible.</p>
+        <div id="successAlert" style="display:none;background:rgba(16,185,129,.1);border:1px solid #10b981;border-radius:12px;padding:16px 20px;margin-bottom:24px;align-items:center;gap:12px;color:#065f46;">
+          <i class="fas fa-check-circle" style="color:#10b981;font-size:1.4rem;"></i>
+          <div><strong>Message sent successfully!</strong> We'll get back to you within 24 hours.</div>
         </div>
 
-        <div class="contact-info-tile reveal reveal-delay-1">
-          <div class="contact-tile-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <div>
-            <h5>Store Address</h5>
-            <p>No. 45, Anna Salai (Mount Road),<br>Near Chennai Central Bus Stand,<br>Chennai – 600 002, Tamil Nadu, India</p>
-          </div>
-        </div>
-
-        <div class="contact-info-tile reveal reveal-delay-2">
-          <div class="contact-tile-icon"><i class="fas fa-phone-alt"></i></div>
-          <div>
-            <h5>Phone Numbers</h5>
-            <p>
-              <a href="tel:+914412345678">+91 44 1234 5678</a> (Landline)<br>
-              <a href="tel:+919876543210">+91 98765 43210</a> (Mobile / WhatsApp)<br>
-              <a href="tel:+919123456789">+91 91234 56789</a> (Sales)
-            </p>
-          </div>
-        </div>
-
-        <div class="contact-info-tile reveal reveal-delay-3">
-          <div class="contact-tile-icon"><i class="fas fa-envelope"></i></div>
-          <div>
-            <h5>Email Addresses</h5>
-            <p>
-              <a href="mailto:info@brightelectricals.com">info@brightelectricals.com</a> (General)<br>
-              <a href="mailto:sales@brightelectricals.com">sales@brightelectricals.com</a> (Sales)<br>
-              <a href="mailto:service@brightelectricals.com">service@brightelectricals.com</a> (Service)
-            </p>
-          </div>
-        </div>
-
-        <div class="contact-info-tile reveal reveal-delay-4">
-          <div class="contact-tile-icon"><i class="fas fa-clock"></i></div>
-          <div>
-            <h5>Working Hours</h5>
-            <div class="hours-grid mt-1">
-              <div class="hours-day">Monday – Friday</div><div class="hours-time">9:00 AM – 8:00 PM</div>
-              <div class="hours-day">Saturday</div><div class="hours-time">9:00 AM – 8:00 PM</div>
-              <div class="hours-day">Sunday</div><div class="hours-time">10:00 AM – 5:00 PM</div>
-              <div class="hours-day">Public Holidays</div><div class="hours-time">Closed</div>
+        <form id="contactForm" novalidate>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <label class="form-label" style="font-size:.88rem;font-weight:600;color:var(--navy);">Full Name <span style="color:var(--orange);">*</span></label>
+              <input type="text" id="cName" class="form-control contact-input" placeholder="e.g. Ramesh Kumar" required/>
+              <div class="contact-error" id="cNameErr"></div>
             </div>
+            <div class="col-md-6">
+              <label class="form-label" style="font-size:.88rem;font-weight:600;color:var(--navy);">Email Address <span style="color:var(--orange);">*</span></label>
+              <input type="email" id="cEmail" class="form-control contact-input" placeholder="e.g. ramesh@email.com" required/>
+              <div class="contact-error" id="cEmailErr"></div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" style="font-size:.88rem;font-weight:600;color:var(--navy);">Phone Number</label>
+              <input type="tel" id="cPhone" class="form-control contact-input" placeholder="+91 98765 43210"/>
+              <div class="contact-error" id="cPhoneErr"></div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" style="font-size:.88rem;font-weight:600;color:var(--navy);">Enquiry Type</label>
+              <select id="cSubject" class="form-control contact-input">
+                <option value="">Select enquiry type</option>
+                <option>Product Enquiry</option>
+                <option>Service Request</option>
+                <option>Bulk Order / Wholesale</option>
+                <option>AMC / Maintenance</option>
+                <option>Technical Support</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label" style="font-size:.88rem;font-weight:600;color:var(--navy);">Your Message <span style="color:var(--orange);">*</span></label>
+              <textarea id="cMessage" class="form-control contact-input" rows="5" placeholder="Describe your requirement, product name, quantity, or any questions..." required></textarea>
+              <div class="contact-error" id="cMsgErr"></div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn-orange" style="padding:14px 40px;border:none;cursor:pointer;font-size:1rem;border-radius:50px;">
+                <i class="fas fa-paper-plane me-2"></i>Send Message
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Side Info -->
+      <div class="col-lg-5 reveal reveal-delay-1">
+        <!-- Map placeholder -->
+        <div style="background:var(--navy);border-radius:16px;overflow:hidden;margin-bottom:28px;height:220px;display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#fff;">
+            <i class="fas fa-map-marked-alt fa-4x" style="color:var(--orange);margin-bottom:14px;display:block;"></i>
+            <div style="font-weight:700;font-size:1.05rem;">No.45, Anna Salai</div>
+            <div style="font-size:.85rem;color:rgba(255,255,255,.65);margin-top:4px;">Chennai – 600 002, Tamil Nadu</div>
+          </div>
+        </div>
+
+        <!-- Store Hours -->
+        <div style="background:#f4f7fb;border-radius:16px;padding:28px;margin-bottom:24px;">
+          <h6 style="color:var(--navy);font-weight:700;margin-bottom:18px;font-size:.95rem;"><i class="fas fa-clock me-2" style="color:var(--orange);"></i>Store Hours</h6>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;justify-content:space-between;font-size:.88rem;"><span style="color:#374151;font-weight:500;">Monday – Friday</span><span style="color:var(--navy);font-weight:700;">9:00 AM – 8:00 PM</span></div>
+            <div style="border-top:1px solid #e5e7eb;"></div>
+            <div style="display:flex;justify-content:space-between;font-size:.88rem;"><span style="color:#374151;font-weight:500;">Saturday</span><span style="color:var(--navy);font-weight:700;">9:00 AM – 8:00 PM</span></div>
+            <div style="border-top:1px solid #e5e7eb;"></div>
+            <div style="display:flex;justify-content:space-between;font-size:.88rem;"><span style="color:#374151;font-weight:500;">Sunday</span><span style="color:var(--navy);font-weight:700;">10:00 AM – 5:00 PM</span></div>
+            <div style="border-top:1px solid #e5e7eb;"></div>
+            <div style="display:flex;justify-content:space-between;font-size:.88rem;"><span style="color:#374151;font-weight:500;">Emergency Service</span><span style="color:var(--orange);font-weight:700;">24/7 Available</span></div>
           </div>
         </div>
 
         <!-- Social Links -->
-        <div class="reveal mt-2">
-          <h5 style="color:#0a2744; font-size:.95rem; font-weight:700; margin-bottom:14px;">Connect With Us</h5>
-          <div class="row g-2">
-            <div class="col-6">
-              <a href="#" class="social-card">
-                <div class="sc-icon" style="background:#1877f2;"><i class="fab fa-facebook-f"></i></div>
-                <div><h6>Facebook</h6><span>@BrightElectricals</span></div>
-              </a>
-            </div>
-            <div class="col-6">
-              <a href="#" class="social-card">
-                <div class="sc-icon" style="background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);"><i class="fab fa-instagram"></i></div>
-                <div><h6>Instagram</h6><span>@bright_electricals</span></div>
-              </a>
-            </div>
-            <div class="col-6">
-              <a href="#" class="social-card">
-                <div class="sc-icon" style="background:#25d366;"><i class="fab fa-whatsapp"></i></div>
-                <div><h6>WhatsApp</h6><span>+91 98765 43210</span></div>
-              </a>
-            </div>
-            <div class="col-6">
-              <a href="#" class="social-card">
-                <div class="sc-icon" style="background:#ff0000;"><i class="fab fa-youtube"></i></div>
-                <div><h6>YouTube</h6><span>Bright Electricals</span></div>
-              </a>
-            </div>
+        <div style="background:var(--navy);border-radius:16px;padding:28px;">
+          <h6 style="color:#fff;font-weight:700;margin-bottom:16px;font-size:.95rem;">Follow Us</h6>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="#" class="soc-btn" style="background:rgba(255,255,255,.1);color:#fff;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="soc-btn" style="background:rgba(255,255,255,.1);color:#fff;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="soc-btn" style="background:rgba(255,255,255,.1);color:#fff;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="soc-btn" style="background:rgba(255,255,255,.1);color:#fff;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;"><i class="fab fa-youtube"></i></a>
+            <a href="https://wa.me/919876543210" target="_blank" style="background:#25d366;color:#fff;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
           </div>
-        </div>
-
-      </div>
-
-      <!-- Right: Form -->
-      <div class="col-lg-7 reveal reveal-delay-1">
-        <div class="contact-form-box">
-          <h3 style="color:#0a2744; font-size:1.5rem; margin-bottom:6px;">Send Us a Message</h3>
-          <p style="color:#6b7280; font-size:.88rem; margin-bottom:28px;">Fill in the form below and we'll get back to you within 24 hours.</p>
-
-          <div id="successAlert" class="alert alert-success d-flex align-items-center gap-2 mb-4" style="border-radius:10px; display:none!important;">
-            <i class="fas fa-check-circle" style="font-size:1.2rem; color:#10b981;"></i>
-            <div>
-              <strong>Message sent successfully!</strong><br>
-              <span style="font-size:.88rem;">Thank you for contacting us. We'll get back to you within 24 hours.</span>
-            </div>
-          </div>
-
-          <form id="contactForm" novalidate>
-            <div class="row g-3">
-
-              <!-- Name -->
-              <div class="col-md-6">
-                <label class="form-label-custom" for="cName">Full Name <span style="color:#ef4444;">*</span></label>
-                <input type="text" id="cName" class="form-control-custom" placeholder="e.g. Ramesh Kumar" />
-                <div class="field-error" id="cNameErr"></div>
-              </div>
-
-              <!-- Email -->
-              <div class="col-md-6">
-                <label class="form-label-custom" for="cEmail">Email Address <span style="color:#ef4444;">*</span></label>
-                <input type="email" id="cEmail" class="form-control-custom" placeholder="e.g. ramesh@email.com" />
-                <div class="field-error" id="cEmailErr"></div>
-              </div>
-
-              <!-- Phone -->
-              <div class="col-md-6">
-                <label class="form-label-custom" for="cPhone">Phone Number</label>
-                <div style="display:flex; gap:0;">
-                  <span style="background:#f4f7fb; border:2px solid #e5e7eb; border-right:none; border-radius:10px 0 0 10px; padding:13px 14px; font-size:.88rem; color:#6b7280; white-space:nowrap; display:flex; align-items:center;">+91</span>
-                  <input type="tel" id="cPhone" class="form-control-custom" placeholder="98765 43210" style="border-radius:0 10px 10px 0;" />
-                </div>
-                <div class="field-error" id="cPhoneErr"></div>
-              </div>
-
-              <!-- Subject -->
-              <div class="col-md-6">
-                <label class="form-label-custom" for="cSubject">Subject</label>
-                <select id="cSubject" class="form-control-custom" style="cursor:pointer;">
-                  <option value="">Select a subject</option>
-                  <option>Product Enquiry</option>
-                  <option>Service Request</option>
-                  <option>Bulk Order / Wholesale</option>
-                  <option>AMC / Maintenance Plan</option>
-                  <option>Complaint / Feedback</option>
-                  <option>General Enquiry</option>
-                </select>
-              </div>
-
-              <!-- Product Interest -->
-              <div class="col-12">
-                <label class="form-label-custom">Product Interest (optional)</label>
-                <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:4px;">
-                  <label style="display:flex; align-items:center; gap:6px; font-size:.85rem; color:#374151; cursor:pointer; background:#f4f7fb; padding:7px 12px; border-radius:50px; border:1px solid #e5e7eb;">
-                    <input type="checkbox" style="accent-color:#FFB800;"> LED Lighting
-                  </label>
-                  <label style="display:flex; align-items:center; gap:6px; font-size:.85rem; color:#374151; cursor:pointer; background:#f4f7fb; padding:7px 12px; border-radius:50px; border:1px solid #e5e7eb;">
-                    <input type="checkbox" style="accent-color:#FFB800;"> Ceiling Fans
-                  </label>
-                  <label style="display:flex; align-items:center; gap:6px; font-size:.85rem; color:#374151; cursor:pointer; background:#f4f7fb; padding:7px 12px; border-radius:50px; border:1px solid #e5e7eb;">
-                    <input type="checkbox" style="accent-color:#FFB800;"> Wiring & Cables
-                  </label>
-                  <label style="display:flex; align-items:center; gap:6px; font-size:.85rem; color:#374151; cursor:pointer; background:#f4f7fb; padding:7px 12px; border-radius:50px; border:1px solid #e5e7eb;">
-                    <input type="checkbox" style="accent-color:#FFB800;"> Switches & MCB
-                  </label>
-                  <label style="display:flex; align-items:center; gap:6px; font-size:.85rem; color:#374151; cursor:pointer; background:#f4f7fb; padding:7px 12px; border-radius:50px; border:1px solid #e5e7eb;">
-                    <input type="checkbox" style="accent-color:#FFB800;"> Inverters & UPS
-                  </label>
-                  <label style="display:flex; align-items:center; gap:6px; font-size:.85rem; color:#374151; cursor:pointer; background:#f4f7fb; padding:7px 12px; border-radius:50px; border:1px solid #e5e7eb;">
-                    <input type="checkbox" style="accent-color:#FFB800;"> Services
-                  </label>
-                </div>
-              </div>
-
-              <!-- Message -->
-              <div class="col-12">
-                <label class="form-label-custom" for="cMessage">Your Message <span style="color:#ef4444;">*</span></label>
-                <textarea id="cMessage" class="form-control-custom" rows="5" placeholder="Tell us about your requirement, quantity needed, or any specific questions..." style="resize:vertical; min-height:120px;"></textarea>
-                <div class="field-error" id="cMsgErr"></div>
-              </div>
-
-              <!-- Privacy -->
-              <div class="col-12">
-                <label style="display:flex; align-items:flex-start; gap:10px; font-size:.84rem; color:#6b7280; cursor:pointer;">
-                  <input type="checkbox" id="cPrivacy" style="accent-color:#FFB800; margin-top:2px; flex-shrink:0;" />
-                  I agree to the <a href="#" style="color:#FFB800;">Privacy Policy</a> and consent to being contacted by Bright Electricals regarding my enquiry.
-                </label>
-              </div>
-
-              <!-- Submit -->
-              <div class="col-12">
-                <button type="submit" class="btn-yellow" style="width:100%; justify-content:center; border-radius:10px; padding:15px; font-size:1rem;">
-                  <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-                <p style="font-size:.78rem; color:#9ca3af; text-align:center; margin-top:12px;">
-                  <i class="fas fa-lock me-1"></i> Your information is secure and will never be shared.
-                </p>
-              </div>
-
-            </div>
-          </form>
+          <p style="color:rgba(255,255,255,.6);font-size:.82rem;margin-top:14px;margin-bottom:0;line-height:1.6;">Follow us for new arrivals, tips, and exclusive offers.</p>
         </div>
       </div>
 
@@ -374,134 +254,34 @@
   </div>
 </section>
 
-<!-- Map Section -->
-<section style="padding:0 0 80px; background:#f4f7fb;">
+<!-- FOOTER NEWSLETTER -->
+<div class="footer-newsletter">
   <div class="container">
-    <div class="section-header text-center reveal mb-4">
-      <span class="section-tag">Find Us</span>
-      <h2 class="section-title">How to <span>Reach Us</span></h2>
-      <div class="divider center"></div>
-    </div>
-    <div class="row g-4 align-items-stretch">
-      <div class="col-lg-8 reveal">
-        <div class="map-frame-wrap">
-          <!-- Embed a real Google Maps iframe — replace the src with your actual location embed URL -->
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.7388186374044!2d80.27456837454839!3d13.083950387247527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267fbe7f67683%3A0x9e6a43e6ead22e1b!2sAnna%20Salai%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Bright Electricals Location — Anna Salai, Chennai"
-          ></iframe>
-        </div>
+    <div class="fn-inner">
+      <div class="fn-text">
+        <h4>Stay Updated with New Arrivals &amp; Offers</h4>
+        <p>Get the latest products and exclusive deals in your inbox.</p>
       </div>
-      <div class="col-lg-4 reveal reveal-delay-1">
-        <div style="background:#0a2744; border-radius:14px; padding:30px; height:100%; display:flex; flex-direction:column; justify-content:space-between;">
-          <div>
-            <h4 style="color:#FFB800; font-size:1.15rem; margin-bottom:20px;"><i class="fas fa-directions me-2"></i>Getting Here</h4>
-            <div style="margin-bottom:16px;">
-              <div style="font-size:.82rem; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,.5); margin-bottom:6px; font-weight:600;">By Bus</div>
-              <p style="color:rgba(255,255,255,.8); font-size:.88rem; line-height:1.6; margin:0;">MTC buses 21C, 27B, 29C stop at Anna Salai / Mount Road. Alight at Central Bus Stand stop.</p>
-            </div>
-            <div style="margin-bottom:16px;">
-              <div style="font-size:.82rem; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,.5); margin-bottom:6px; font-weight:600;">By Metro</div>
-              <p style="color:rgba(255,255,255,.8); font-size:.88rem; line-height:1.6; margin:0;">Nearest Metro station: Chennai Central (Blue Line). 5-minute walk from the station exit.</p>
-            </div>
-            <div style="margin-bottom:20px;">
-              <div style="font-size:.82rem; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,.5); margin-bottom:6px; font-weight:600;">By Car / Auto</div>
-              <p style="color:rgba(255,255,255,.8); font-size:.88rem; line-height:1.6; margin:0;">Located on the main Anna Salai road. Ample parking available at Central Parking Complex, 200m away.</p>
-            </div>
-          </div>
-          <div>
-            <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-yellow" style="width:100%; justify-content:center; border-radius:10px;">
-              <i class="fas fa-map-marked-alt"></i> Open in Google Maps
-            </a>
-          </div>
-        </div>
-      </div>
+      <form class="fn-form" id="newsletterForm">
+        <input type="email" placeholder="Enter your email address" required/>
+        <button type="submit">Subscribe <i class="fas fa-paper-plane ms-1"></i></button>
+      </form>
     </div>
   </div>
-</section>
+</div>
 
-<!-- FAQ Section -->
-<section class="section-padding" style="background:#fff;">
-  <div class="container">
-    <div class="section-header text-center reveal">
-      <span class="section-tag">Common Questions</span>
-      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
-      <div class="divider center"></div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="faq-item reveal reveal-delay-1">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Do you offer home delivery for products?
-            <i class="fas fa-chevron-down faq-icon"></i>
-          </div>
-          <div class="faq-answer">Yes, we offer home delivery across Chennai and nearby areas. Orders above ₹999 qualify for free delivery. For bulk orders, we provide same-day or next-day delivery as per availability. Contact us for delivery outside Chennai.</div>
-        </div>
-        <div class="faq-item reveal reveal-delay-2">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Do you provide installation services along with product purchase?
-            <i class="fas fa-chevron-down faq-icon"></i>
-          </div>
-          <div class="faq-answer">Absolutely! We offer professional installation services for all products we sell — fans, lights, MCBs, inverters, and more. Our certified electricians will install your products safely and efficiently. Contact us to schedule an installation visit.</div>
-        </div>
-        <div class="faq-item reveal reveal-delay-3">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            What is your return and warranty policy?
-            <i class="fas fa-chevron-down faq-icon"></i>
-          </div>
-          <div class="faq-answer">We offer a 7-day return policy on all products in their original, unused condition with original packaging. Product warranties are as per the manufacturer's terms (typically 1–3 years). Bring your purchase receipt to the store for warranty claims or returns.</div>
-        </div>
-        <div class="faq-item reveal reveal-delay-4">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Do you cater to bulk or wholesale orders?
-            <i class="fas fa-chevron-down faq-icon"></i>
-          </div>
-          <div class="faq-answer">Yes, we welcome bulk orders from contractors, builders, electricians, and businesses. We offer special wholesale pricing for large quantities. Please contact our sales team at sales@brightelectricals.com or call +91 91234 56789 to discuss your requirements and get a custom quotation.</div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            How do I book an electrical repair or installation service?
-            <i class="fas fa-chevron-down faq-icon"></i>
-          </div>
-          <div class="faq-answer">You can book a service by calling us, sending a WhatsApp message, or filling out the contact form on this page. Mention your requirement, address, and preferred date/time slot. Our team will confirm the booking within a few hours and send a certified electrician to your location.</div>
-        </div>
-        <div class="faq-item reveal reveal-delay-1">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Are your electricians certified and trained?
-            <i class="fas fa-chevron-down faq-icon"></i>
-          </div>
-          <div class="faq-answer">Yes, all our service electricians hold valid ISI (Indian Standards Institute) electrical contractor licenses and undergo regular skill-upgradation training. We also carry full liability insurance for all service work carried out at customer premises.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <div class="container text-center position-relative">
-    <div class="reveal">
-      <span class="section-tag" style="color:#FFB800; border-color:rgba(255,184,0,.4); background:rgba(255,184,0,.1);">Still Have Questions?</span>
-      <h2 class="cta-title mt-2">We're Always Here to Help</h2>
-      <p class="cta-sub mb-5 mx-auto">Call us directly or visit our showroom — our expert team is ready to assist you Monday to Saturday.</p>
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="tel:+914412345678" class="btn-yellow"><i class="fas fa-phone-alt"></i> +91 44 1234 5678</a>
-        <a href="tel:+919876543210" class="btn-outline-white"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="row g-4">
       <div class="col-lg-4 col-md-6">
-        <div class="footer-logo-icon"><i class="fas fa-bolt"></i></div>
-        <span class="footer-brand-name">Bright Electricals</span>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div class="fl-icon"><i class="fas fa-bolt"></i></div>
+          <div>
+            <div style="color:#fff;font-size:1.2rem;font-weight:800;letter-spacing:-.5px;">Bright Electricals</div>
+            <div style="color:rgba(255,255,255,.5);font-size:.78rem;">Powering Your World</div>
+          </div>
+        </div>
         <p class="footer-about">Your trusted partner for all electrical needs. Premium-quality products and professional services since 2005.</p>
         <div class="social-links">
           <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -527,9 +307,9 @@
         <ul class="footer-list">
           <li><a href="products.html"><i class="fas fa-chevron-right"></i>LED Lighting</a></li>
           <li><a href="products.html"><i class="fas fa-chevron-right"></i>Ceiling Fans</a></li>
-          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Wiring & Cables</a></li>
-          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Switches & MCB</a></li>
-          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Inverters & UPS</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Wiring &amp; Cables</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Switches &amp; MCB</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i>Inverters &amp; UPS</a></li>
           <li><a href="products.html"><i class="fas fa-chevron-right"></i>Safety Devices</a></li>
         </ul>
       </div>
@@ -541,10 +321,7 @@
         </div>
         <div class="footer-contact-row">
           <div class="footer-contact-icon"><i class="fas fa-phone-alt"></i></div>
-          <div class="info">
-            <a href="tel:+914412345678" style="color:rgba(255,255,255,.65);">+91 44 1234 5678</a><br>
-            <a href="tel:+919876543210" style="color:rgba(255,255,255,.65);">+91 98765 43210</a>
-          </div>
+          <div class="info"><a href="tel:+914412345678" style="color:rgba(255,255,255,.65);">+91 44 1234 5678</a><br><a href="tel:+919876543210" style="color:rgba(255,255,255,.65);">+91 98765 43210</a></div>
         </div>
         <div class="footer-contact-row">
           <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
@@ -558,28 +335,12 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="mb-0">© 2024 <a href="index.html">Bright Electricals</a>. All rights reserved.</p>
+    <p class="mb-0">© 2024 <a href="index.html">Bright Electricals</a>. All rights reserved. Designed with <i class="fas fa-heart" style="color:var(--orange);"></i> in Chennai.</p>
   </div>
 </footer>
 
 <button id="scrollTop" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
-<script>
-  function toggleFaq(el) {
-    const allQ = document.querySelectorAll('.faq-question');
-    const allA = document.querySelectorAll('.faq-answer');
-    const isOpen = el.classList.contains('open');
-    // close all
-    allQ.forEach(q => q.classList.remove('open'));
-    allA.forEach(a => a.classList.remove('open'));
-    // open clicked if it was closed
-    if (!isOpen) {
-      el.classList.add('open');
-      el.nextElementSibling.classList.add('open');
-    }
-  }
-</script>
 </body>
 </html>
