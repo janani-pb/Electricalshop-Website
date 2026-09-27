@@ -177,13 +177,17 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ── Thumbnail switcher ── */
   const thumbs = document.querySelectorAll('.thumb-tile');
   const mainIcon = document.getElementById('mainProductIcon');
-  if (thumbs.length && mainIcon) {
+  const mainImg  = document.getElementById('mainProductImg');
+  if (thumbs.length) {
     thumbs.forEach(t => {
       t.addEventListener('click', function () {
-        thumbs.forEach(x => x.classList.remove('active'));
+        thumbs.forEach(x => { x.classList.remove('active'); x.style.borderColor = '#e5e7eb'; });
         this.classList.add('active');
+        this.style.borderColor = 'var(--orange)';
         const ic = this.dataset.icon;
-        if (ic) { mainIcon.className = ic; }
+        const img = this.dataset.img;
+        if (ic && mainIcon) { mainIcon.className = ic; }
+        if (img && mainImg)  { mainImg.src = img; }
       });
     });
   }
